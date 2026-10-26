@@ -52,7 +52,7 @@ h1{font-family:'Amiri',serif;font-size:28px;font-weight:700;color:var(--primary)
     <ul class="info-list">
       <li>64 صنف مع أسعار افتراضية (تُعدل لاحقاً)</li>
       <li>9 أقسام (شاورما، مشاوي، بروستد، كريسبي، إلخ)</li>
-      <li>صور افتراضية من Unsplash متناسبة مع كل صنف</li>
+      <li>صور افتراضية متناسبة مع كل صنف</li>
       <li>إعدادات المطعم كاملة (اسم، أرقام، عنوان)</li>
     </ul>
   </div>
@@ -93,7 +93,6 @@ const db = getFirestore(app);
 const $ = id => document.getElementById(id);
 const genId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
-// صور افتراضية (تعدل من الأدمن)
 const IMG = {
   shawarma: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&q=80",
   grill: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80",
@@ -106,17 +105,13 @@ const IMG = {
   drink: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&q=80"
 };
 
-// الأصناف من الصورة
 const ITEMS = [
-  // الشاورما
   {cat:"الشاورما", name:"شاورما كبيرة", price:30, desc:"شاورما دجاج أو لحم كبيرة", img:IMG.shawarma},
   {cat:"الشاورما", name:"شاورما دبل", price:45, desc:"شاورما دبل بالجبنة والصوص", img:IMG.shawarma},
   {cat:"الشاورما", name:"شاورما وسط", price:20, desc:"شاورما وسط", img:IMG.shawarma},
   {cat:"الشاورما", name:"شاورما عربي", price:25, desc:"شاورما عربي بالخبز", img:IMG.shawarma},
   {cat:"الشاورما", name:"كيلو شاورما", price:120, desc:"كيلو شاورما مع الخبز والمخلل", img:IMG.shawarma},
   {cat:"الشاورما", name:"نصف كيلو شاورما", price:65, desc:"نصف كيلو شاورما", img:IMG.shawarma},
-  
-  // فروع مشاوي غاز
   {cat:"فروع مشاوي غاز", name:"فروج مشوي", price:80, desc:"فروج مشوي كامل على الغاز", img:IMG.grill},
   {cat:"فروع مشاوي غاز", name:"نصف فروج مشوي", price:45, desc:"نصف فروج مشوي", img:IMG.grill},
   {cat:"فروع مشاوي غاز", name:"كيلو كستا", price:90, desc:"كيلو كستا مشوي", img:IMG.grill},
@@ -127,8 +122,6 @@ const ITEMS = [
   {cat:"فروع مشاوي غاز", name:"كيلو كباب", price:130, desc:"كيلو كباب حلبي", img:IMG.grill},
   {cat:"فروع مشاوي غاز", name:"نصف كيلو كباب", price:70, desc:"نصف كيلو كباب", img:IMG.grill},
   {cat:"فروع مشاوي غاز", name:"سمك مشوي على الفحم", price:150, desc:"سمك مشوي طازج", img:IMG.grill},
-
-  // البروستد
   {cat:"البروستد", name:"فروج بروستد", price:75, desc:"فروج بروستد كامل مع بطاطا", img:IMG.broasted},
   {cat:"البروستد", name:"نصف فروج بروستد", price:40, desc:"نصف فروج بروستد", img:IMG.broasted},
   {cat:"البروستد", name:"كيلو دبوس", price:100, desc:"كيلو دبوس بروستد", img:IMG.broasted},
@@ -137,8 +130,6 @@ const ITEMS = [
   {cat:"البروستد", name:"نصف كيلو كستا", price:50, desc:"نصف كيلو كستا", img:IMG.broasted},
   {cat:"البروستد", name:"كيلو جناحات", price:85, desc:"كيلو جناحات بروستد", img:IMG.broasted},
   {cat:"البروستد", name:"نصف كيلو جناحات", price:45, desc:"نصف كيلو جناحات", img:IMG.broasted},
-
-  // الكريسبي
   {cat:"الكريسبي", name:"كيلو كريسبي", price:100, desc:"كيلو كريسبي مقرمش", img:IMG.crispy},
   {cat:"الكريسبي", name:"سندويشة كريسبي", price:25, desc:"سندويشة كريسبي بالصوص", img:IMG.crispy},
   {cat:"الكريسبي", name:"وجبة كريسبي", price:35, desc:"وجبة كريسبي مع بطاطا", img:IMG.crispy},
@@ -146,21 +137,15 @@ const ITEMS = [
   {cat:"الكريسبي", name:"لوم وسط", price:30, desc:"لوم كريسبي وسط", img:IMG.crispy},
   {cat:"الكريسبي", name:"نصف كيلو كريسبي", price:55, desc:"نصف كيلو كريسبي", img:IMG.crispy},
   {cat:"الكريسبي", name:"ربعجة كريسبي", price:20, desc:"ربعجة كريسبي", img:IMG.crispy},
-  
-  // كبة
   {cat:"كبة", name:"كبة مشوية", price:30, desc:"كبة مشوية محشية لحم", img:IMG.kibbeh},
   {cat:"كبة", name:"كبة مقلية", price:25, desc:"كبة مقلية مقرمشة", img:IMG.kibbeh},
   {cat:"كبة", name:"كبة لبنية", price:35, desc:"كبة لبنية بصوص اللبن", img:IMG.kibbeh},
-
-  // بطاطا
   {cat:"بطاطا", name:"بطاطا سمون", price:15, desc:"بطاطا مقلية سمون", img:IMG.fries},
   {cat:"بطاطا", name:"سمون دبل", price:25, desc:"بطاطا سمون دبل بالجبنة", img:IMG.fries},
   {cat:"بطاطا", name:"بطاطا سياحي", price:20, desc:"بطاطا سياحي مع الثوم", img:IMG.fries},
   {cat:"بطاطا", name:"سياحي دبل", price:30, desc:"بطاطا سياحي دبل", img:IMG.fries},
   {cat:"بطاطا", name:"محن بطاطا", price:25, desc:"محن بطاطا بالشاورما", img:IMG.fries},
   {cat:"بطاطا", name:"بطاطا تشيز", price:30, desc:"بطاطا بالجبنة السائلة", img:IMG.fries},
-
-  // الغربي
   {cat:"الغربي", name:"اسكالوب", price:35, desc:"سندويشة اسكالوب", img:IMG.western},
   {cat:"الغربي", name:"زنجر", price:30, desc:"سندويشة زنجر حارة", img:IMG.western},
   {cat:"الغربي", name:"همبرغر", price:30, desc:"همبرغر لحم بالجبنة", img:IMG.western},
@@ -170,21 +155,17 @@ const ITEMS = [
   {cat:"الغربي", name:"مكسيكي", price:35, desc:"سندويشة مكسيكي", img:IMG.western},
   {cat:"الغربي", name:"فاهيتا", price:35, desc:"سندويشة فاهيتا", img:IMG.western},
   {cat:"الغربي", name:"سمك فيلية", price:45, desc:"سندويشة سمك فيلية", img:IMG.western},
-
-  // سلطات
   {cat:"سلطات", name:"سلطة ذرة", price:20, desc:"سلطة ذرة حلوة", img:IMG.salad},
   {cat:"سلطات", name:"سلطة مكسيكية", price:25, desc:"سلطة مكسيكية حارة", img:IMG.salad},
   {cat:"سلطات", name:"كول سلو", price:20, desc:"سلطة كول سلو", img:IMG.salad},
   {cat:"سلطات", name:"سيزر", price:30, desc:"سلطة سيزر بالدجاج", img:IMG.salad},
-
-  // الكولا والمشروبات
-  {cat:"الكولا والمشروبات", name:"مياه صغيرة", price:5, desc:"مياه معدنية صغيرة", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"مياه كبيرة", price:8, desc:"مياه معدنية كبيرة", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"عيران", price:10, desc:"عيران طازج", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"كولا صغير", price:10, desc:"مشروب غازي صغير", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"كولا كبير", price:15, desc:"مشروب غازي كبير", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"كولا عائلي", price:25, desc:"مشروب غازي عائلي", img:IMG.drink},
-  {cat:"الكولا والمشروبات", name:"كولا تك", price:12, desc:"مشروب غازي تك", img:IMG.drink}
+  {cat:"المشروبات", name:"مياه صغيرة", price:5, desc:"مياه معدنية صغيرة", img:IMG.drink},
+  {cat:"المشروبات", name:"مياه كبيرة", price:8, desc:"مياه معدنية كبيرة", img:IMG.drink},
+  {cat:"المشروبات", name:"عيران", price:10, desc:"عيران طازج", img:IMG.drink},
+  {cat:"المشروبات", name:"كولا صغير", price:10, desc:"مشروب غازي صغير", img:IMG.drink},
+  {cat:"المشروبات", name:"كولا كبير", price:15, desc:"مشروب غازي كبير", img:IMG.drink},
+  {cat:"المشروبات", name:"كولا عائلي", price:25, desc:"مشروب غازي عائلي", img:IMG.drink},
+  {cat:"المشروبات", name:"كولا تك", price:12, desc:"مشروب غازي تك", img:IMG.drink}
 ];
 
 const SETTINGS = {
@@ -206,15 +187,14 @@ const SETTINGS = {
     { name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }
   ],
   heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
-  logoUrl: "", // لوجو نصي
-  theme: "royal", // الثيم الافتراضي
+  logoUrl: "", 
+  theme: "royal",
   menuLayout: "grid",
   categoryOrder: [],
   showPopular: true,
   showOffers: true,
   showPrepTime: true,
-  showCallButton: true,
-  confirmOrder: true
+  showCallButton: true
 };
 
 function setStatus(msg, type = "") {
