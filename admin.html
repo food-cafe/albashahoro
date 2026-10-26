@@ -45,8 +45,7 @@ img{display:block;max-width:100%}
 .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .login-card{background:var(--card-1);border-radius:28px;padding:40px 30px;max-width:420px;width:100%;box-shadow:var(--shadow-lg),0 0 0 1px var(--border);position:relative}
 .login-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--primary),var(--red))}
-.login-logo{width:110px;height:110px;border-radius:24px;overflow:hidden;margin:0 auto 20px;box-shadow:0 8px 30px rgba(225,6,0,.35);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-family:'Amiri',serif;font-weight:900;font-size:24px;text-align:center;line-height:1}
-.login-logo img{width:135%;height:135%;object-fit:cover}
+.login-logo{width:110px;height:110px;border-radius:24px;overflow:hidden;margin:0 auto 20px;box-shadow:0 8px 30px rgba(225,6,0,.35);display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:2px solid var(--border-strong)}
 .login-ornament{text-align:center;color:var(--primary);opacity:.6;letter-spacing:10px;font-size:12px;margin-bottom:8px}
 .login-title{text-align:center;font-family:'Amiri',serif;font-size:28px;font-weight:700;color:var(--primary);margin-bottom:6px}
 .login-sub{text-align:center;font-size:13px;color:var(--dim);margin-bottom:28px}
@@ -73,8 +72,7 @@ img{display:block;max-width:100%}
 .admin-header{background:var(--card-1);padding:14px 20px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);border-bottom:1px solid var(--border)}
 .admin-header-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .admin-brand{display:flex;align-items:center;gap:12px}
-.admin-logo{width:50px;height:50px;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--border-strong);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-family:'Amiri',serif;font-weight:900;font-size:14px}
-.admin-logo img{width:135%;height:135%;object-fit:cover}
+.admin-logo{width:50px;height:50px;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--border-strong);display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:1px solid var(--border-strong)}
 .admin-brand-name{font-family:'Amiri',serif;font-size:18px;font-weight:700;color:var(--primary)}
 .admin-brand-sub{font-size:11px;color:var(--dim)}
 .admin-actions{display:flex;gap:8px}
@@ -126,7 +124,7 @@ img{display:block;max-width:100%}
 .layout-option:hover, .theme-option:hover{border-color:var(--border-strong);transform:translateY(-2px)}
 .layout-option.active, .theme-option.active{border-color:var(--primary);background:rgba(212,175,55,.1);box-shadow:0 0 0 3px rgba(212,175,55,.15)}
 .layout-option input, .theme-option input{position:absolute;opacity:0;pointer-events:none}
-.layout-icon{font-size:32px;margin-bottom:10px}
+.layout-icon{font-size:32px;margin-bottom:10px;display:flex;justify-content:center;align-items:center;height:40px}
 .layout-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
 .layout-desc{font-size:11px;color:var(--dim)}
 .layout-check{position:absolute;top:10px;left:10px;width:22px;height:22px;border-radius:50%;background:var(--primary);color:#fff;display:none;align-items:center;justify-content:center;font-size:13px;font-weight:900}
@@ -214,8 +212,12 @@ img{display:block;max-width:100%}
 <div class="login-wrap" id="loginWrap">
   <div class="login-card">
     <div class="login-logo" id="loginLogoBox">
-      <span>الباشا<br>هورو</span>
-      <img id="loginLogoImg" style="display:none" alt="">
+      <svg viewBox="0 0 120 100" width="80%" height="80%">
+        <path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/>
+        <path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/>
+        <circle cx="60" cy="75" r="7" fill="#1E3A8A"/>
+        <path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/>
+      </svg>
     </div>
     <div class="login-ornament">✦ ✦ ✦</div>
     <h1 class="login-title">لوحة التحكم</h1>
@@ -239,7 +241,14 @@ img{display:block;max-width:100%}
   <header class="admin-header">
     <div class="admin-header-inner">
       <div class="admin-brand">
-        <div class="admin-logo" id="adminLogoBox"><span id="adminLogoText">الباشا<br>هورو</span><img id="adminLogoImg" style="display:none" alt=""></div>
+        <div class="admin-logo">
+          <svg viewBox="0 0 120 100" width="80%" height="80%">
+            <path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/>
+            <path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/>
+            <circle cx="60" cy="75" r="7" fill="#1E3A8A"/>
+            <path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/>
+          </svg>
+        </div>
         <div><div class="admin-brand-name">لوحة التحكم</div><div class="admin-brand-sub">الباشا هورو</div></div>
       </div>
       <div class="admin-actions">
@@ -334,6 +343,32 @@ img{display:block;max-width:100%}
     <section class="panel" id="panel-design">
       <div class="panel-header"><h1 class="panel-title">🎨 التصميم والعروض</h1><p class="panel-sub">تحكمي بشكل الموقع والميزات الظاهرة للزبون</p></div>
       
+      <div class="card-box">
+        <div class="card-box-title">🎩 شكل الشعار (اللوجو)</div>
+        <div class="layout-selector">
+          <label class="layout-option" data-logo="svg">
+            <input type="radio" name="logoType" value="svg">
+            <div class="layout-check">✓</div>
+            <div class="layout-icon">
+              <svg viewBox="0 0 120 100" width="40" height="35"><path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/><path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/><circle cx="60" cy="75" r="7" fill="#1E3A8A"/><path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/></svg>
+            </div>
+            <div class="layout-name">الطربوش والشنب</div>
+          </label>
+          <label class="layout-option" data-logo="text-red">
+            <input type="radio" name="logoType" value="text-red">
+            <div class="layout-check">✓</div>
+            <div class="layout-icon" style="font-family:'Amiri';font-weight:900;color:var(--red)">الباشا</div>
+            <div class="layout-name">نصي (ملون)</div>
+          </label>
+          <label class="layout-option" data-logo="text-gold">
+            <input type="radio" name="logoType" value="text-gold">
+            <div class="layout-check">✓</div>
+            <div class="layout-icon" style="font-family:'Amiri';font-weight:900;color:var(--primary)">الباشا</div>
+            <div class="layout-name">نصي (ذهبي)</div>
+          </label>
+        </div>
+      </div>
+
       <div class="card-box">
         <div class="card-box-title">🎨 ثيم الألوان</div>
         <div class="form-note" style="margin-bottom:12px">📌 عند اختيار ثيم، يتغير <strong>فوراً في لوحة التحكم وفي الموقع</strong>.</div>
@@ -495,7 +530,7 @@ img{display:block;max-width:100%}
     deliveryNote: "خدمة التوصيل متوفرة داخل عرطوز", deliveryShow: true,
     deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }],
     heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
-    logoUrl: "", theme: "royal", menuLayout: "grid", categoryOrder: [],
+    logoType: "svg", theme: "royal", menuLayout: "grid", categoryOrder: [],
     showPopular: true, showOffers: true, showPrepTime: true, showCallButton: true
   };
 
@@ -805,10 +840,17 @@ img{display:block;max-width:100%}
       if (opt.dataset.theme === theme) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; }
     });
     const layout = settings.menuLayout || "grid";
-    document.querySelectorAll(".layout-option").forEach(opt => {
+    document.querySelectorAll(".layout-option[data-layout]").forEach(opt => {
       const input = opt.querySelector('input[name="menuLayout"]');
       if (opt.dataset.layout === layout) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; }
     });
+    
+    const logoType = settings.logoType || "svg";
+    document.querySelectorAll(".layout-option[data-logo]").forEach(opt => {
+      const input = opt.querySelector('input[name="logoType"]');
+      if (opt.dataset.logo === logoType) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; }
+    });
+
     $("setShowPopular").checked = settings.showPopular !== false;
     $("setShowOffers").checked = settings.showOffers !== false;
     $("setShowPrepTime").checked = settings.showPrepTime !== false;
@@ -822,9 +864,15 @@ img{display:block;max-width:100%}
       opt.classList.add("active"); opt.querySelector('input').checked = true; applyTheme(opt.dataset.theme);
     };
   });
-  document.querySelectorAll(".layout-option").forEach(opt => {
+  document.querySelectorAll(".layout-option[data-layout]").forEach(opt => {
     opt.onclick = e => {
-      e.preventDefault(); document.querySelectorAll(".layout-option").forEach(o => o.classList.remove("active"));
+      e.preventDefault(); document.querySelectorAll(".layout-option[data-layout]").forEach(o => o.classList.remove("active"));
+      opt.classList.add("active"); opt.querySelector('input').checked = true;
+    };
+  });
+  document.querySelectorAll(".layout-option[data-logo]").forEach(opt => {
+    opt.onclick = e => {
+      e.preventDefault(); document.querySelectorAll(".layout-option[data-logo]").forEach(o => o.classList.remove("active"));
       opt.classList.add("active"); opt.querySelector('input').checked = true;
     };
   });
@@ -832,8 +880,12 @@ img{display:block;max-width:100%}
   $("saveDesignBtn").onclick = async () => {
     const themeInput = document.querySelector('input[name="theme"]:checked');
     const layoutInput = document.querySelector('input[name="menuLayout"]:checked');
+    const logoInput = document.querySelector('input[name="logoType"]:checked');
+    
     const data = {
-      theme: themeInput ? themeInput.value : "royal", menuLayout: layoutInput ? layoutInput.value : "grid",
+      theme: themeInput ? themeInput.value : "royal", 
+      menuLayout: layoutInput ? layoutInput.value : "grid",
+      logoType: logoInput ? logoInput.value : "svg",
       showPopular: $("setShowPopular").checked, showOffers: $("setShowOffers").checked,
       showPrepTime: $("setShowPrepTime").checked, showCallButton: $("setShowCallButton").checked
     };
