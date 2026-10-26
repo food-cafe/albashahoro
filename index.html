@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* الثيمات الثلاثة */
 :root, [data-theme="royal"]{
   --bg:#0A0A0A;--bg-2:#141414;--bg-3:#1A1A1A;--card-1:#1A1A1A;--card-2:#202020;
   --primary:#D4AF37;--primary-2:#E5C158;--primary-3:#B8941F;
@@ -48,13 +47,11 @@ img{display:block;max-width:100%}
 ::-webkit-scrollbar-track{background:var(--bg-2)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary-3),var(--primary));border-radius:4px}
 
-/* Header */
 .header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .4s}
 .header.scrolled{background:color-mix(in srgb,var(--bg) 97%,transparent);border-bottom-color:var(--border-strong);box-shadow:var(--shadow)}
 .header-inner{max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-.logo{width:60px;height:60px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.3);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-family:'Amiri',serif;font-weight:900;font-size:22px;text-align:center;line-height:1}
-.logo img{width:135%;height:135%;object-fit:cover;flex-shrink:0}
+.logo{width:60px;height:60px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.3);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg-2)}
 .brand-text{display:flex;flex-direction:column}
 .brand-name{font-family:'Amiri',serif;font-size:22px;font-weight:900;color:var(--primary);line-height:1.1;letter-spacing:.5px}
 .brand-sub{font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:2px}
@@ -67,7 +64,6 @@ img{display:block;max-width:100%}
 .cart-badge.bump{animation:badgeBump .4s}
 @keyframes badgeBump{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
-/* Hero */
 .hero{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;padding:40px 20px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;opacity:.4;filter:brightness(.5) saturate(1.1)}
 .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,var(--hero-1) 0%,var(--hero-2) 60%,var(--bg) 100%)}
@@ -77,10 +73,9 @@ img{display:block;max-width:100%}
 .hero-glass::before{top:0}
 .hero-glass::after{bottom:0}
 .hero-ornament{font-size:16px;color:var(--primary);opacity:.8;letter-spacing:10px;margin-bottom:8px}
-.hero-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.5);transition:transform .3s;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-family:'Amiri',serif;font-weight:900;font-size:32px;text-align:center;line-height:1.1}
+.hero-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:24px;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.5);transition:transform .3s;background:var(--bg-2);border:2px solid var(--border-strong)}
 .hero-logo-wrap:hover{transform:scale(1.05)}
-.hero-logo{width:135%;height:135%;object-fit:cover;flex-shrink:0}
-@media(max-width:640px){.hero-logo-wrap{width:130px;height:130px;font-size:26px;border-radius:20px}}
+@media(max-width:640px){.hero-logo-wrap{width:130px;height:130px;border-radius:20px}}
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 14px}
 .hero-divider-line{flex:1;max-width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--primary))}
 .hero-divider-line.r{background:linear-gradient(90deg,var(--primary),transparent)}
@@ -98,7 +93,6 @@ img{display:block;max-width:100%}
 .hero-btn.call{background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;box-shadow:0 8px 24px rgba(225,6,0,.4)}
 .hero-btn.map{background:color-mix(in srgb,var(--bg) 60%,transparent);color:var(--text);border-color:var(--border-strong)}
 
-/* Delivery */
 .delivery-section{max-width:1300px;margin:0 auto;padding:0 20px;transform:translateY(-30px);position:relative;z-index:5}
 .delivery-card{background:var(--card-1);backdrop-filter:blur(20px);border-radius:22px;padding:20px 22px;box-shadow:var(--shadow-lg);border:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
 .delivery-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
@@ -107,9 +101,7 @@ img{display:block;max-width:100%}
 .delivery-opt{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:1px solid var(--border-strong);border-radius:50px;font-weight:700;font-size:13px;color:var(--text);text-decoration:none;transition:all .3s}
 .delivery-opt:hover{background:color-mix(in srgb,var(--primary) 20%,transparent);border-color:var(--primary);transform:translateY(-2px)}
 .delivery-opt-icon{font-size:20px}
-.delivery-opt-logo{width:32px;height:32px;object-fit:contain;border-radius:6px}
 
-/* Controls */
 .controls{max-width:1300px;margin:0 auto;padding:16px 20px 8px}
 .search-wrap{position:relative;margin-bottom:18px;max-width:500px;margin-inline:auto}
 .search-input{width:100%;padding:16px 54px 16px 22px;border-radius:50px;border:1px solid var(--border);background:var(--card-1);font-family:inherit;font-size:14.5px;color:var(--text);outline:none;transition:all .3s}
@@ -124,7 +116,6 @@ img{display:block;max-width:100%}
 .cat-btn:hover{color:var(--primary);border-color:var(--primary)}
 .cat-btn.active{background:linear-gradient(135deg,var(--primary-3),var(--primary));color:var(--bg);border-color:transparent;box-shadow:0 8px 24px rgba(212,175,55,.4);font-weight:800}
 
-/* Menu */
 .menu-section{max-width:1300px;margin:0 auto;padding:20px 20px 120px}
 .menu-header{text-align:center;margin-bottom:32px}
 .menu-header-ornament{color:var(--primary);opacity:.6;font-size:12px;letter-spacing:8px;margin-bottom:6px}
@@ -188,7 +179,6 @@ img{display:block;max-width:100%}
 .empty-state-icon{font-size:70px;margin-bottom:16px;opacity:.4}
 .empty-state-title{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--primary);margin-bottom:8px}
 
-/* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 @media(min-width:640px){.modal-overlay{align-items:center;padding:24px}}
 .modal-overlay.open{opacity:1;visibility:visible}
@@ -217,7 +207,6 @@ img{display:block;max-width:100%}
 .qty-val{font-family:'Amiri',serif;font-size:20px;font-weight:700;color:var(--primary);min-width:28px;text-align:center}
 .add-btn{width:100%;padding:16px;border-radius:50px;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
 
-/* Drawer */
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:300;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .drawer-overlay.open{opacity:1;visibility:visible}
 .drawer{position:fixed;top:0;left:0;bottom:0;width:100%;max-width:460px;background:var(--bg-2);z-index:301;transform:translateX(-100%);transition:transform .4s;display:flex;flex-direction:column;border-left:1px solid var(--border)}
@@ -247,7 +236,6 @@ img{display:block;max-width:100%}
 .cart-total-val small{font-size:12px;font-family:'Tajawal',sans-serif;color:var(--dim)}
 .checkout-btn{width:100%;padding:16px;border-radius:50px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
 
-/* Form */
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:6px}
 .form-label .req{color:var(--red)}
@@ -257,22 +245,24 @@ img{display:block;max-width:100%}
 .form-note{font-size:12px;color:var(--dim);margin-top:6px}
 .send-order-btn{width:100%;margin-top:8px;padding:16px;border-radius:50px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
 
-/* Toast */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card-1);color:var(--text);padding:14px 26px;border-radius:50px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow-lg);z-index:500;opacity:0;transition:all .4s;pointer-events:none;display:flex;align-items:center;gap:10px;border:1px solid var(--border-strong);max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{background:linear-gradient(135deg,#25D366,#128C7E);border-color:rgba(37,211,102,.6);color:#fff}
 .toast.error{background:linear-gradient(135deg,#7A2828,#D32F2F);border-color:rgba(225,6,0,.6);color:#fff}
 
-/* Footer */
 .footer{background:var(--card-1);text-align:center;padding:50px 20px 36px;margin-top:40px;border-top:1px solid var(--border)}
 .footer-ornament{color:var(--primary);opacity:.5;letter-spacing:10px;font-size:11px;margin-bottom:12px}
-.footer-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-family:'Amiri',serif;font-weight:900;font-size:20px;text-align:center;line-height:1}
-.footer-logo{width:135%;height:135%;object-fit:cover;flex-shrink:0}
+.footer-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:20px;overflow:hidden;background:var(--bg-2);border:2px solid var(--border-strong)}
 .footer-name{font-family:'Amiri',serif;font-size:24px;font-weight:700;color:var(--primary);margin-bottom:8px}
 .footer-addr{font-size:13.5px;color:var(--dim);margin-bottom:22px}
 .footer-socials{display:flex;justify-content:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
 .footer-social{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:1px solid var(--border-strong);border-radius:50px;color:var(--text);text-decoration:none;font-size:12.5px;font-weight:600}
 .footer-copy{font-size:11.5px;color:var(--soft);padding-top:20px;border-top:1px solid var(--border)}
+
+/* ستايلات النصوص للوجو */
+.logo-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:22px; text-align:center; line-height:1.1; border-radius:inherit;}
+.hero-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:32px; text-align:center; line-height:1.1; border-radius:inherit;}
+.footer-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:20px; text-align:center; line-height:1.1; border-radius:inherit;}
 </style>
 </head>
 <body>
@@ -281,8 +271,17 @@ img{display:block;max-width:100%}
   <div class="header-inner">
     <a class="logo-wrap" href="#">
       <div class="logo" id="logoBox">
-        <span id="logoText">الباشا<br>هورو</span>
-        <img id="logoCustom" style="display:none" alt="الباشا هورو">
+        <!-- اللوجو SVG -->
+        <div id="logoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 120 100" width="85%" height="85%">
+            <path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/>
+            <path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/>
+            <circle cx="60" cy="75" r="7" fill="#1E3A8A"/>
+            <path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/>
+          </svg>
+        </div>
+        <!-- اللوجو النصي -->
+        <div id="logoText" class="logo-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
       </div>
       <div class="brand-text">
         <div class="brand-name" id="brandName">الباشا هورو</div>
@@ -303,8 +302,17 @@ img{display:block;max-width:100%}
   <div class="hero-glass">
     <div class="hero-ornament">✦ ✦ ✦</div>
     <div class="hero-logo-wrap" id="heroLogoWrap">
-      <span id="heroLogoText">الباشا<br>هورو</span>
-      <img class="hero-logo" id="heroLogo" style="display:none" alt="الباشا هورو">
+      <!-- اللوجو SVG -->
+      <div id="heroLogoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 120 100" width="80%" height="80%">
+          <path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/>
+          <path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/>
+          <circle cx="60" cy="75" r="7" fill="#1E3A8A"/>
+          <path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/>
+        </svg>
+      </div>
+      <!-- اللوجو النصي -->
+      <div id="heroLogoText" class="hero-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
     </div>
     <div class="hero-divider"><div class="hero-divider-line"></div><span class="hero-divider-icon">✦</span><div class="hero-divider-line r"></div></div>
     <p class="hero-subtitle" id="heroSubtitle">عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق</p>
@@ -338,8 +346,17 @@ img{display:block;max-width:100%}
 <footer class="footer">
   <div class="footer-ornament">✦ ✦ ✦</div>
   <div class="footer-logo-wrap" id="footerLogoWrap">
-    <span id="footerLogoText">الباشا<br>هورو</span>
-    <img class="footer-logo" id="footerLogo" style="display:none" alt="الباشا هورو">
+    <!-- اللوجو SVG -->
+    <div id="footerLogoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 120 100" width="80%" height="80%">
+        <path d="M30 30 L90 30 L80 65 L40 65 Z" fill="#E10600" stroke="#D4AF37" stroke-width="3"/>
+        <path d="M60 30 L60 75" stroke="#1E3A8A" stroke-width="4"/>
+        <circle cx="60" cy="75" r="7" fill="#1E3A8A"/>
+        <path d="M20 85 C30 70, 45 80, 60 85 C75 80, 90 70, 100 85 C90 95, 75 90, 60 88 C45 90, 30 95, 20 85 Z" fill="#1E3A8A"/>
+      </svg>
+    </div>
+    <!-- اللوجو النصي -->
+    <div id="footerLogoText" class="footer-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
   </div>
   <div class="footer-addr" id="footerAddr">عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق</div>
   <div class="footer-socials" id="footerSocials"></div>
@@ -419,7 +436,7 @@ const DEFAULT_SETTINGS = {
   deliveryNote: "خدمة التوصيل متوفرة داخل عرطوز", deliveryShow: true,
   deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }],
   heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
-  logoUrl: "", theme: "royal", menuLayout: "grid", categoryOrder: [],
+  logoType: "svg", theme: "royal", menuLayout: "grid", categoryOrder: [],
   showPopular: true, showOffers: true, showPrepTime: true, showCallButton: true, confirmOrder: true
 };
 
@@ -451,15 +468,29 @@ function renderSettings() {
   $("heroStatusText").textContent = settings.status || "مفتوح الآن";
 
   if (settings.heroImage) $("heroBg").style.backgroundImage = `url('${settings.heroImage}')`;
-  
-  if (settings.logoUrl) {
-    $("logoCustom").src = settings.logoUrl; $("logoCustom").style.display = "block"; $("logoText").style.display = "none";
-    $("heroLogo").src = settings.logoUrl; $("heroLogo").style.display = "block"; $("heroLogoText").style.display = "none";
-    $("footerLogo").src = settings.logoUrl; $("footerLogo").style.display = "block"; $("footerLogoText").style.display = "none";
+
+  // إعداد اللوجو
+  const logoType = settings.logoType || "svg";
+  $("logoSvg").style.display = "none"; $("logoText").style.display = "none";
+  $("heroLogoSvg").style.display = "none"; $("heroLogoText").style.display = "none";
+  $("footerLogoSvg").style.display = "none"; $("footerLogoText").style.display = "none";
+
+  if (logoType === "svg") {
+    $("logoSvg").style.display = "flex"; $("heroLogoSvg").style.display = "flex"; $("footerLogoSvg").style.display = "flex";
   } else {
-    $("logoCustom").style.display = "none"; $("logoText").style.display = "block";
-    $("heroLogo").style.display = "none"; $("heroLogoText").style.display = "block";
-    $("footerLogo").style.display = "none"; $("footerLogoText").style.display = "block";
+    const isGold = logoType === "text-gold";
+    const bgStyle = isGold ? 'transparent' : 'linear-gradient(135deg, var(--red), var(--primary))';
+    const colorStyle = isGold ? 'var(--primary)' : '#fff';
+    const borderStyle = isGold ? '2px solid var(--primary)' : 'none';
+
+    $("logoText").style.display = "flex";
+    $("logoText").style.background = bgStyle; $("logoText").style.color = colorStyle;
+
+    $("heroLogoText").style.display = "flex";
+    $("heroLogoText").style.background = bgStyle; $("heroLogoText").style.color = colorStyle; $("heroLogoText").style.border = borderStyle;
+
+    $("footerLogoText").style.display = "flex";
+    $("footerLogoText").style.background = bgStyle; $("footerLogoText").style.color = colorStyle; $("footerLogoText").style.border = borderStyle;
   }
 
   const wa = settings.whatsapp ? `https://wa.me/${settings.whatsapp}` : "#";
