@@ -325,7 +325,7 @@ img{display:block;max-width:100%}
     <section class="panel" id="panel-design">
       <div class="panel-header"><h1 class="panel-title">🎨 التصميم والعروض</h1><p class="panel-sub">تحكمي بشكل الموقع والميزات الظاهرة للزبون</p></div>
       
-      <!-- قسم اللوجو -->
+      <!-- قسم اللوجو المحدث -->
       <div class="card-box">
         <div class="card-box-title">🎩 شكل الشعار (اللوجو)</div>
         <div class="layout-selector" style="grid-template-columns: repeat(4, 1fr);">
@@ -355,10 +355,23 @@ img{display:block;max-width:100%}
           </label>
         </div>
         
-        <div class="form-group" id="logoUrlGroup" style="display:none; margin-top:15px; padding:15px; background:var(--bg-2); border-radius:12px; border:1px dashed var(--border);">
-          <label class="form-label">رابط صورة اللوجو (URL)</label>
-          <input type="text" class="form-input" id="setLogoUrl" placeholder="https://res.cloudinary.com/...">
-          <div class="form-note">ارفعي صورة اللوجو (يُفضل بخلفية شفافة PNG) والصقي الرابط هنا. سيتم إزالة الدائرة السوداء تلقائياً لتظهر الصورة بشكل أنيق.</div>
+        <!-- 🔥 قسم رفع صورة اللوجو الجديد -->
+        <div class="form-group" id="logoUrlGroup" style="display:none; margin-top:20px; padding:20px; background:var(--bg-2); border-radius:16px; border:1px dashed var(--border-strong);">
+          <label class="form-label" style="font-size:14px; margin-bottom:12px;">ارفعي صورة اللوجو المخصصة</label>
+          <div class="image-upload">
+            <div class="image-preview" id="logoImgPreview" style="width:100px; height:100px; border-radius:50%;">
+              <div class="image-preview-icon">🖼️</div>
+            </div>
+            <div class="image-upload-info">
+              <div class="file-input-wrap">
+                <input type="file" class="file-input" id="customLogoImage" accept="image/*">
+                <div class="file-btn">📁 اختر صورة اللوجو من جهازك</div>
+              </div>
+              <div class="form-note">📌 يُفضل أن تكون الصورة بخلفية شفافة (PNG) لتطلع بشكل احترافي. سيتم ضغطها ورفعها تلقائياً.</div>
+              <div class="upload-progress" id="logoUploadProgress"><div class="upload-progress-bar" id="logoUploadProgressBar"></div></div>
+              <input type="hidden" id="setLogoUrl">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -533,7 +546,28 @@ img{display:block;max-width:100%}
   function compressImage(file, maxSize = 800, quality = 0.8) { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = e => { const img = new Image(); img.onload = () => { let { width, height } = img; if (width > maxSize || height > maxSize) { const ratio = Math.min(maxSize / width, maxSize / height); width = Math.round(width * ratio); height = Math.round(height * ratio); } const canvas = document.createElement("canvas"); canvas.width = width; canvas.height = height; canvas.getContext("2d").drawImage(img, 0, 0, width, height); canvas.toBlob(blob => blob ? resolve(blob) : reject("فشل"), "image/jpeg", quality); }; img.onerror = () => reject("ملف غير صالح"); img.src = e.target.result; }; reader.readAsDataURL(file); }); }
   async function uploadImage(blob) { const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`; const fd = new FormData(); fd.append("file", blob); fd.append("upload_preset", UPLOAD_PRESET); const res = await fetch(url, { method: "POST", body: fd }); if (!res.ok) throw new Error("فشل الرفع"); const data = await res.json(); return data.secure_url; }
 
+  // رفع صورة الصنف
   $("itemImage").addEventListener("change", async e => { const file = e.target.files[0]; if (!file) return; if (!file.type.startsWith("image/")) return showToast("⚠️ الرجاء اختيار صورة", "error"); const prog = $("uploadProgress"), bar = $("uploadProgressBar"); prog.classList.add("show"); bar.style.width = "15%"; try { const blob = await compressImage(file); $("imgPreview").innerHTML = `<img src="${URL.createObjectURL(blob)}" alt="">`; bar.style.width = "55%"; const url = await uploadImage(blob); bar.style.width = "100%"; currentImageUrl = url; $("itemImageUrl").value = url; $("imgPreview").innerHTML = `<img src="${url}" alt="">`; showToast("✓ تم رفع الصورة", "success"); setTimeout(() => { prog.classList.remove("show"); bar.style.width = "0%"; }, 800); } catch (err) { showToast("❌ فشل رفع الصورة", "error"); prog.classList.remove("show"); } e.target.value = ""; });
+
+  // 🔥 رفع صورة اللوجو المخصصة
+  $("customLogoImage").addEventListener("change", async e => {
+    const file = e.target.files[0]; if (!file) return;
+    if (!file.type.startsWith("image/")) return showToast("⚠️ الرجاء اختيار صورة", "error");
+    const prog = $("logoUploadProgress"), bar = $("logoUploadProgressBar");
+    prog.classList.add("show"); bar.style.width = "15%";
+    try {
+      const blob = await compressImage(file, 400, 0.9); // جودة عالية وحجم مناسب للوجو
+      $("logoImgPreview").innerHTML = `<img src="${URL.createObjectURL(blob)}" style="object-fit:contain;border-radius:50%;" alt="">`;
+      bar.style.width = "55%";
+      const url = await uploadImage(blob);
+      bar.style.width = "100%";
+      $("setLogoUrl").value = url;
+      $("logoImgPreview").innerHTML = `<img src="${url}" style="object-fit:contain;border-radius:50%;" alt="">`;
+      showToast("✓ تم رفع اللوجو، لا تنسي الضغط على حفظ", "success");
+      setTimeout(() => { prog.classList.remove("show"); bar.style.width = "0%"; }, 800);
+    } catch (err) { showToast("❌ فشل رفع اللوجو", "error"); prog.classList.remove("show"); }
+    e.target.value = "";
+  });
 
   $("saveItemBtn").onclick = async () => {
     const category = $("itemCategory").value.trim(), name = $("itemName").value.trim(); const priceRaw = $("itemPrice").value.trim(), offerPriceRaw = $("itemOfferPrice").value.trim(); const prepTimeRaw = $("itemPrepTime").value.trim(), description = $("itemDesc").value.trim(); const isPopular = $("itemIsPopular").checked, isOffer = $("itemIsOffer").checked; const imageUrl = $("itemImageUrl").value.trim() || currentImageUrl;
@@ -556,6 +590,11 @@ img{display:block;max-width:100%}
     document.querySelectorAll(".layout-option[data-logo]").forEach(opt => { const input = opt.querySelector('input[name="logoType"]'); if (opt.dataset.logo === logoType) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; } });
     
     $("setLogoUrl").value = settings.logoUrl || "";
+    if (settings.logoUrl) {
+      $("logoImgPreview").innerHTML = `<img src="${settings.logoUrl}" style="object-fit:contain;border-radius:50%;" alt="">`;
+    } else {
+      $("logoImgPreview").innerHTML = `<div class="image-preview-icon">🖼️</div>`;
+    }
     $("logoUrlGroup").style.display = logoType === "image" ? "block" : "none";
 
     $("setShowPopular").checked = settings.showPopular !== false; $("setShowOffers").checked = settings.showOffers !== false; $("setShowPrepTime").checked = settings.showPrepTime !== false; $("setShowCallButton").checked = settings.showCallButton !== false;
