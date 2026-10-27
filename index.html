@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
+/* الثيمات */
 :root, [data-theme="white-red"]{
   --bg:#FFFFFF; --bg-2:#F8F9FA; --bg-3:#F1F3F5; --card-1:#FFFFFF; --card-2:#F8F9FA;
   --primary:#E10600; --primary-2:#FF4D4D; --primary-3:#B00500;
@@ -27,25 +28,6 @@
   --glass:rgba(10,10,10,.7);--hero-1:rgba(10,10,10,.5);--hero-2:rgba(10,10,10,.9);
   --shadow:0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 24px 60px rgba(0,0,0,.7);
 }
-[data-theme="classic"]{
-  --bg:#0B0B0F;--bg-2:#16161D;--bg-3:#1A1A24;--card-1:#1A1A24;--card-2:#20202A;
-  --primary:#D4AF37;--primary-2:#E5C158;--primary-3:#B8941F;
-  --red:#1E3A8A;--blue:#1E3A8A;
-  --text:#F5F5F5;--dim:#A0A0B0;--soft:#6B6B7B;
-  --border:rgba(212,175,55,.2);--border-strong:rgba(212,175,55,.45);
-  --glass:rgba(11,11,15,.7);--hero-1:rgba(11,11,15,.5);--hero-2:rgba(11,11,15,.9);
-  --shadow:0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 24px 60px rgba(0,0,0,.7);
-}
-[data-theme="midnight"]{
-  --bg:#0A1628;--bg-2:#0F1E35;--bg-3:#152545;--card-1:#152545;--card-2:#1A2E52;
-  --primary:#C9A961;--primary-2:#DBC07D;--primary-3:#A98B45;
-  --red:#E10600;--blue:#3B82F6;
-  --text:#FFFFFF;--dim:#A0B0D0;--soft:#7088A8;
-  --border:rgba(201,169,97,.25);--border-strong:rgba(201,169,97,.5);
-  --glass:rgba(10,22,40,.7);--hero-1:rgba(10,22,40,.5);--hero-2:rgba(10,22,40,.9);
-  --shadow:0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 24px 60px rgba(0,0,0,.7);
-}
-
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
@@ -61,7 +43,8 @@ img{display:block;max-width:100%}
 .header-inner{max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
 
-.logo{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.15);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#FFFFFF;transition:all .3s;}
+/* اللوجو مخفي افتراضياً لمنع الوميض */
+.logo{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.15);position:relative;flex-shrink:0;display:none;align-items:center;justify-content:center;background:#FFFFFF;transition:all .3s;}
 .logo.custom-image-logo { background: transparent; box-shadow: none; border-radius: 0; }
 .logo.custom-image-logo::before { display: none; }
 .logo.custom-image-logo img { width:100%; height:100%; object-fit:contain; mix-blend-mode: multiply; transform: scale(1.1); }
@@ -91,7 +74,6 @@ img{display:block;max-width:100%}
 .hero-glass::after{bottom:0}
 .hero-ornament{font-size:16px;color:var(--primary);opacity:.8;letter-spacing:10px;margin-bottom:8px}
 
-/* 🪄 المخفي: عشان ما يظهر اللوجو القديم */
 .hero-logo-wrap{display:none;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:50%;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.15);transition:all .3s;background:#FFFFFF;border:2px solid var(--border)}
 .hero-logo-wrap:hover{transform:scale(1.05)}
 @media(max-width:640px){.hero-logo-wrap{width:130px;height:130px}}
@@ -277,7 +259,6 @@ img{display:block;max-width:100%}
 .footer{background:var(--card-1);text-align:center;padding:50px 20px 36px;margin-top:40px;border-top:1px solid var(--border)}
 .footer-ornament{color:var(--primary);opacity:.5;letter-spacing:10px;font-size:11px;margin-bottom:12px}
 
-/* 🪄 المخفي: عشان ما يظهر اللوجو القديم */
 .footer-logo-wrap{display:none;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:50%;overflow:hidden;background:#FFFFFF;border:2px solid var(--border);transition:all .3s;}
 .footer-logo-wrap.custom-image-logo { background: transparent; border: none; border-radius: 0; overflow: visible; }
 .footer-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; mix-blend-mode: multiply; transform:scale(1.15); }
@@ -298,7 +279,6 @@ img{display:block;max-width:100%}
 <header class="header" id="header">
   <div class="header-inner">
     <a class="logo-wrap" href="#">
-      <!-- 🪄 مخفي عشان ما يطلع القديم -->
       <div class="logo" id="logoBox" style="display:none;">
         <div id="logoSvg" style="display:none;"></div>
         <img id="logoImage" style="display:none" alt="Logo">
@@ -322,7 +302,6 @@ img{display:block;max-width:100%}
   <div class="hero-pattern"></div>
   <div class="hero-glass">
     <div class="hero-ornament">✦ ✦ ✦</div>
-    <!-- 🪄 مخفي عشان ما يطلع القديم -->
     <div class="hero-logo-wrap" id="heroLogoWrap">
       <div id="heroLogoSvg" style="display:none;"></div>
       <img id="heroLogoImage" style="display:none" alt="Logo">
@@ -359,7 +338,6 @@ img{display:block;max-width:100%}
 
 <footer class="footer">
   <div class="footer-ornament">✦ ✦ ✦</div>
-  <!-- 🪄 مخفي عشان ما يطلع القديم -->
   <div class="footer-logo-wrap" id="footerLogoWrap">
     <div id="footerLogoSvg" style="display:none;"></div>
     <img id="footerLogoImage" style="display:none" alt="Logo">
@@ -476,29 +454,20 @@ function renderSettings() {
 
   if (settings.heroImage) $("heroBg").style.backgroundImage = `url('${settings.heroImage}')`;
 
-  // 🧠 إظهار اللوجو بعد جلب البيانات (لمنع الوميض)
   const logoType = settings.logoType || "svg";
   const hasImg = logoType === "image" && settings.logoUrl;
 
-  $("logoBox").style.display = "flex";
-  $("heroLogoWrap").style.display = "flex";
-  $("footerLogoWrap").style.display = "flex";
-
+  $("logoBox").style.display = "flex"; $("heroLogoWrap").style.display = "flex"; $("footerLogoWrap").style.display = "flex";
   $("logoSvg").style.display = "none"; $("logoText").style.display = "none"; $("logoImage").style.display = "none";
   $("heroLogoSvg").style.display = "none"; $("heroLogoText").style.display = "none"; $("heroLogoImage").style.display = "none";
   $("footerLogoSvg").style.display = "none"; $("footerLogoText").style.display = "none"; $("footerLogoImage").style.display = "none";
   
-  $("logoBox").classList.remove("custom-image-logo");
-  $("heroLogoWrap").classList.remove("custom-image-logo");
-  $("footerLogoWrap").classList.remove("custom-image-logo");
+  $("logoBox").classList.remove("custom-image-logo"); $("heroLogoWrap").classList.remove("custom-image-logo"); $("footerLogoWrap").classList.remove("custom-image-logo");
 
   if (logoType === "svg") {
     $("logoSvg").style.display = "flex"; $("heroLogoSvg").style.display = "flex"; $("footerLogoSvg").style.display = "flex";
   } else if (hasImg) {
-    $("logoBox").classList.add("custom-image-logo");
-    $("heroLogoWrap").classList.add("custom-image-logo");
-    $("footerLogoWrap").classList.add("custom-image-logo");
-    
+    $("logoBox").classList.add("custom-image-logo"); $("heroLogoWrap").classList.add("custom-image-logo"); $("footerLogoWrap").classList.add("custom-image-logo");
     $("logoImage").src = settings.logoUrl; $("logoImage").style.display = "block";
     $("heroLogoImage").src = settings.logoUrl; $("heroLogoImage").style.display = "block";
     $("footerLogoImage").src = settings.logoUrl; $("footerLogoImage").style.display = "block";
@@ -508,14 +477,9 @@ function renderSettings() {
     const colorStyle = isGold ? 'var(--primary)' : '#fff';
     const borderStyle = isGold ? '2px solid var(--primary)' : 'none';
 
-    $("logoText").style.display = "flex";
-    $("logoText").style.background = bgStyle; $("logoText").style.color = colorStyle;
-
-    $("heroLogoText").style.display = "flex";
-    $("heroLogoText").style.background = bgStyle; $("heroLogoText").style.color = colorStyle; $("heroLogoText").style.border = borderStyle;
-
-    $("footerLogoText").style.display = "flex";
-    $("footerLogoText").style.background = bgStyle; $("footerLogoText").style.color = colorStyle; $("footerLogoText").style.border = borderStyle;
+    $("logoText").style.display = "flex"; $("logoText").style.background = bgStyle; $("logoText").style.color = colorStyle;
+    $("heroLogoText").style.display = "flex"; $("heroLogoText").style.background = bgStyle; $("heroLogoText").style.color = colorStyle; $("heroLogoText").style.border = borderStyle;
+    $("footerLogoText").style.display = "flex"; $("footerLogoText").style.background = bgStyle; $("footerLogoText").style.color = colorStyle; $("footerLogoText").style.border = borderStyle;
   }
 
   const wa = settings.whatsapp ? `https://wa.me/${settings.whatsapp}` : "#";
