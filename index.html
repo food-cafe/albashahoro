@@ -3,13 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-<meta name="theme-color" content="#0A0A0A">
+<meta name="theme-color" content="#FFFFFF">
 <title>الباشا هورو | قائمة الطعام</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root, [data-theme="royal"]{
+/* الثيمات */
+:root, [data-theme="white-red"]{
+  --bg:#FFFFFF; --bg-2:#F8F9FA; --bg-3:#F1F3F5; --card-1:#FFFFFF; --card-2:#F8F9FA;
+  --primary:#E10600; --primary-2:#FF4D4D; --primary-3:#B00500;
+  --red:#E10600; --blue:#1E3A8A;
+  --text:#1A1A1A; --dim:#555555; --soft:#888888;
+  --border:rgba(225,6,0,.15); --border-strong:rgba(225,6,0,.35);
+  --glass:rgba(255,255,255,.85); --hero-1:rgba(255,255,255,.5); --hero-2:rgba(255,255,255,.95);
+  --shadow:0 10px 30px rgba(0,0,0,.08); --shadow-lg:0 24px 60px rgba(0,0,0,.15);
+}
+[data-theme="royal"]{
   --bg:#0A0A0A;--bg-2:#141414;--bg-3:#1A1A1A;--card-1:#1A1A1A;--card-2:#202020;
   --primary:#D4AF37;--primary-2:#E5C158;--primary-3:#B8941F;
   --red:#E10600;--blue:#1E3A8A;
@@ -27,22 +37,13 @@
   --glass:rgba(11,11,15,.7);--hero-1:rgba(11,11,15,.5);--hero-2:rgba(11,11,15,.9);
   --shadow:0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 24px 60px rgba(0,0,0,.7);
 }
-[data-theme="midnight"]{
-  --bg:#0A1628;--bg-2:#0F1E35;--bg-3:#152545;--card-1:#152545;--card-2:#1A2E52;
-  --primary:#C9A961;--primary-2:#DBC07D;--primary-3:#A98B45;
-  --red:#E10600;--blue:#3B82F6;
-  --text:#FFFFFF;--dim:#A0B0D0;--soft:#7088A8;
-  --border:rgba(201,169,97,.25);--border-strong:rgba(201,169,97,.5);
-  --glass:rgba(10,22,40,.7);--hero-1:rgba(10,22,40,.5);--hero-2:rgba(10,22,40,.9);
-  --shadow:0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 24px 60px rgba(0,0,0,.7);
-}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 img{display:block;max-width:100%}
-::selection{background:var(--primary);color:var(--bg)}
+::selection{background:var(--primary);color:#fff}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background:var(--bg-2)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary-3),var(--primary));border-radius:4px}
@@ -52,14 +53,10 @@ img{display:block;max-width:100%}
 .header-inner{max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
 
-/* ستايل الدائرة الافتراضي */
-.logo{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.3);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#3D0000;transition:all .3s;}
-
-/* كلاس السحر للصورة المخصصة (بيشيل الدائرة والخلفية) */
+.logo{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.15);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#FFFFFF;transition:all .3s;}
 .logo.custom-image-logo { background: transparent; box-shadow: none; border-radius: 0; }
 .logo.custom-image-logo::before { display: none; }
-.logo.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); }
-
+.logo.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1)); }
 .logo svg { width:100%; height:100%; }
 .logo::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border-strong);animation:logoPulse 3s ease-in-out infinite;pointer-events:none}
 @keyframes logoPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.08);opacity:.3}}
@@ -68,75 +65,71 @@ img{display:block;max-width:100%}
 .brand-name{font-family:'Amiri',serif;font-size:22px;font-weight:900;color:var(--primary);line-height:1.1;letter-spacing:.5px}
 .brand-sub{font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:2px}
 
-.cart-btn{position:relative;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 8px 28px rgba(225,6,0,.4);transition:transform .3s;animation:cartFloat 3s infinite;flex-shrink:0}
-@keyframes cartFloat{0%,100%{box-shadow:0 8px 28px rgba(225,6,0,.4)}50%{box-shadow:0 12px 36px rgba(225,6,0,.6)}}
+.cart-btn{position:relative;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 8px 28px rgba(225,6,0,.3);transition:transform .3s;animation:cartFloat 3s infinite;flex-shrink:0}
+@keyframes cartFloat{0%,100%{box-shadow:0 8px 28px rgba(225,6,0,.3)}50%{box-shadow:0 12px 36px rgba(225,6,0,.5)}}
 .cart-btn:active{transform:scale(.92)}
-.cart-badge{position:absolute;top:-4px;left:-4px;background:#fff;color:var(--red);font-size:12px;font-weight:900;min-width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;padding:0 6px;border:2px solid var(--red);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.cart-badge{position:absolute;top:-4px;left:-4px;background:#fff;color:var(--primary);font-size:12px;font-weight:900;min-width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;padding:0 6px;border:2px solid var(--primary);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .cart-badge.hidden{display:none}
 .cart-badge.bump{animation:badgeBump .4s}
 @keyframes badgeBump{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
 .hero{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;padding:40px 20px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;opacity:.4;filter:brightness(.5) saturate(1.1)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;opacity:.1;filter:brightness(1) saturate(1.1)}
 .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,var(--hero-1) 0%,var(--hero-2) 60%,var(--bg) 100%)}
-.hero-pattern{position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,var(--primary) 1px,transparent 1px);background-size:30px 30px}
-.hero-glass{position:relative;z-index:2;max-width:680px;width:100%;background:var(--glass);backdrop-filter:blur(24px);border:1px solid var(--border-strong);border-radius:28px;padding:32px 28px;text-align:center;box-shadow:var(--shadow-lg)}
+.hero-pattern{position:absolute;inset:0;opacity:.03;background-image:radial-gradient(circle,var(--primary) 1px,transparent 1px);background-size:30px 30px}
+.hero-glass{position:relative;z-index:2;max-width:680px;width:100%;background:var(--glass);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:28px;padding:32px 28px;text-align:center;box-shadow:var(--shadow-lg)}
 .hero-glass::before,.hero-glass::after{content:"";position:absolute;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
 .hero-glass::before{top:0}
 .hero-glass::after{bottom:0}
 .hero-ornament{font-size:16px;color:var(--primary);opacity:.8;letter-spacing:10px;margin-bottom:8px}
 
-/* ستايل الهيرو الافتراضي */
-.hero-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:50%;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.5);transition:all .3s;background:#3D0000;border:2px solid var(--border-strong)}
+.hero-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:50%;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.15);transition:all .3s;background:#FFFFFF;border:2px solid var(--border)}
 .hero-logo-wrap:hover{transform:scale(1.05)}
 @media(max-width:640px){.hero-logo-wrap{width:130px;height:130px}}
-
-/* كلاس السحر للهيرو */
 .hero-logo-wrap.custom-image-logo { background: transparent; box-shadow: none; border: none; border-radius: 0; overflow: visible; }
-.hero-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)); }
-
+.hero-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15)); }
 .hero-logo-wrap svg { width:100%; height:100%; }
 
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 14px}
 .hero-divider-line{flex:1;max-width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--primary))}
 .hero-divider-line.r{background:linear-gradient(90deg,var(--primary),transparent)}
 .hero-divider-icon{color:var(--primary);font-size:12px}
-.hero-subtitle{font-size:13.5px;color:var(--text);opacity:.85;margin-bottom:16px;letter-spacing:.4px}
-.hero-status{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.2);color:#25D366;padding:8px 18px;border-radius:40px;font-size:12.5px;font-weight:700;margin-bottom:20px;border:1px solid rgba(37,211,102,.4)}
-.hero-status.closed{background:rgba(225,6,0,.2);color:#FF6B6B;border-color:rgba(225,6,0,.4)}
-.hero-status.orders{background:rgba(212,175,55,.2);color:var(--primary);border-color:var(--border-strong)}
+.hero-subtitle{font-size:13.5px;color:var(--text);opacity:.85;margin-bottom:16px;letter-spacing:.4px;font-weight:600}
+.hero-status{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.15);color:#1E8E3E;padding:8px 18px;border-radius:40px;font-size:12.5px;font-weight:700;margin-bottom:20px;border:1px solid rgba(37,211,102,.4)}
+.hero-status.closed{background:rgba(225,6,0,.1);color:var(--primary);border-color:rgba(225,6,0,.3)}
+.hero-status.orders{background:rgba(225,6,0,.15);color:var(--primary);border-color:var(--border-strong)}
 .status-dot{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hero-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:40px;font-weight:700;font-size:13.5px;text-decoration:none;transition:all .3s;border:1px solid transparent}
 .hero-btn:hover{transform:translateY(-2px)}
-.hero-btn.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.35)}
-.hero-btn.call{background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;box-shadow:0 8px 24px rgba(225,6,0,.4)}
-.hero-btn.map{background:color-mix(in srgb,var(--bg) 60%,transparent);color:var(--text);border-color:var(--border-strong)}
+.hero-btn.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.2)}
+.hero-btn.call{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;box-shadow:0 8px 24px rgba(225,6,0,.3)}
+.hero-btn.map{background:var(--bg-2);color:var(--text);border-color:var(--border-strong)}
 
 .delivery-section{max-width:1300px;margin:0 auto;padding:0 20px;transform:translateY(-30px);position:relative;z-index:5}
 .delivery-card{background:var(--card-1);backdrop-filter:blur(20px);border-radius:22px;padding:20px 22px;box-shadow:var(--shadow-lg);border:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
 .delivery-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
 .delivery-title{font-family:'Amiri',serif;font-size:18px;font-weight:700;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px}
 .delivery-options{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.delivery-opt{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:1px solid var(--border-strong);border-radius:50px;font-weight:700;font-size:13px;color:var(--text);text-decoration:none;transition:all .3s}
-.delivery-opt:hover{background:color-mix(in srgb,var(--primary) 20%,transparent);border-color:var(--primary);transform:translateY(-2px)}
+.delivery-opt{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--bg-2);border:1px solid var(--border-strong);border-radius:50px;font-weight:700;font-size:13px;color:var(--text);text-decoration:none;transition:all .3s}
+.delivery-opt:hover{background:var(--bg-3);border-color:var(--primary);transform:translateY(-2px)}
 .delivery-opt-icon{font-size:20px}
 .delivery-opt-logo{width:32px;height:32px;object-fit:contain;border-radius:6px}
 
 .controls{max-width:1300px;margin:0 auto;padding:16px 20px 8px}
 .search-wrap{position:relative;margin-bottom:18px;max-width:500px;margin-inline:auto}
-.search-input{width:100%;padding:16px 54px 16px 22px;border-radius:50px;border:1px solid var(--border);background:var(--card-1);font-family:inherit;font-size:14.5px;color:var(--text);outline:none;transition:all .3s}
-.search-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px color-mix(in srgb,var(--primary) 15%,transparent)}
+.search-input{width:100%;padding:16px 54px 16px 22px;border-radius:50px;border:1px solid var(--border);background:var(--card-1);font-family:inherit;font-size:14.5px;color:var(--text);outline:none;transition:all .3s;font-weight:600}
+.search-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(225,6,0,.1)}
 .search-input::placeholder{color:var(--soft)}
 .search-icon{position:absolute;right:22px;top:50%;transform:translateY(-50%);color:var(--primary);font-size:19px;pointer-events:none}
 
 .categories{display:flex;gap:10px;overflow-x:auto;padding:6px 4px 14px;scrollbar-width:none}
 .categories::-webkit-scrollbar{display:none}
 @media(min-width:900px){.categories{justify-content:center;flex-wrap:wrap;overflow:visible}}
-.cat-btn{padding:11px 22px;background:transparent;color:var(--dim);border:1px solid var(--border);border-radius:50px;font-weight:600;font-size:13.5px;white-space:nowrap;transition:all .3s;flex-shrink:0}
+.cat-btn{padding:11px 22px;background:transparent;color:var(--dim);border:1px solid var(--border);border-radius:50px;font-weight:700;font-size:13.5px;white-space:nowrap;transition:all .3s;flex-shrink:0}
 .cat-btn:hover{color:var(--primary);border-color:var(--primary)}
-.cat-btn.active{background:linear-gradient(135deg,var(--primary-3),var(--primary));color:var(--bg);border-color:transparent;box-shadow:0 8px 24px rgba(212,175,55,.4);font-weight:800}
+.cat-btn.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(225,6,0,.3);font-weight:800}
 
 .menu-section{max-width:1300px;margin:0 auto;padding:20px 20px 120px}
 .menu-header{text-align:center;margin-bottom:32px}
@@ -157,7 +150,7 @@ img{display:block;max-width:100%}
 @media(min-width:640px){.menu-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}}
 .menu-list{display:flex;flex-direction:column;gap:12px}
 .card-list{display:flex;gap:14px;background:var(--card-1);border-radius:18px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:all .3s;padding:12px;align-items:center}
-.card-list:hover{border-color:var(--primary);transform:translateX(-4px)}
+.card-list:hover{border-color:var(--primary);transform:translateX(-4px);box-shadow:var(--shadow)}
 .card-list-img{width:100px;height:100px;border-radius:12px;object-fit:cover;flex-shrink:0}
 .card-list-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
 .card-list-name{font-family:'Amiri',serif;font-size:18px;font-weight:700;color:var(--text)}
@@ -165,7 +158,7 @@ img{display:block;max-width:100%}
 .card-list-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
 .card-list-price{font-family:'Amiri',serif;font-size:20px;font-weight:700;color:var(--primary)}
 .card-list-price small{font-size:10px;color:var(--dim);font-family:'Tajawal',sans-serif}
-.card-list-add{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;flex-shrink:0}
+.card-list-add{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;flex-shrink:0}
 
 .card{background:var(--card-1);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:all .4s;cursor:pointer;display:flex;flex-direction:column;position:relative}
 .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--border-strong)}
@@ -174,12 +167,12 @@ img{display:block;max-width:100%}
 .card-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--bg-3)}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .card:hover .card-img img{transform:scale(1.08)}
-.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 70%,transparent) 100%);pointer-events:none}
+.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.6) 100%);pointer-events:none}
 .card-badges{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:6px;z-index:2}
 .card-badge{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800;backdrop-filter:blur(8px)}
-.card-badge.popular{background:linear-gradient(135deg,var(--red),var(--primary));color:#fff}
+.card-badge.popular{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
 .card-badge.offer{background:linear-gradient(135deg,#D32F2F,#E53935);color:#fff}
-.card-cat{position:absolute;top:12px;left:12px;background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;backdrop-filter:blur(8px);border:1px solid var(--border-strong);z-index:2}
+.card-cat{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.95);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:10px;font-weight:800;backdrop-filter:blur(8px);border:1px solid var(--border);z-index:2}
 .card-body{padding:14px;flex:1;display:flex;flex-direction:column;gap:6px}
 .card-name{font-family:'Amiri',serif;font-size:17px;font-weight:700;color:var(--text)}
 .card-desc{font-size:11.5px;color:var(--dim);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:auto}
@@ -189,7 +182,7 @@ img{display:block;max-width:100%}
 .card-price-old{font-size:11px;color:var(--soft);text-decoration:line-through;font-family:'Tajawal',sans-serif}
 .card-price-val{display:flex;align-items:baseline;gap:2px}
 .card-price small{font-size:10px;font-family:'Tajawal',sans-serif;color:var(--dim)}
-.card-add{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;flex-shrink:0;transition:all .3s}
+.card-add{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;flex-shrink:0;transition:all .3s}
 .card-add:hover{transform:rotate(90deg) scale(1.1)}
 
 .skeleton{background:var(--card-1);border-radius:20px;overflow:hidden;border:1px solid var(--border)}
@@ -201,24 +194,24 @@ img{display:block;max-width:100%}
 .empty-state-icon{font-size:70px;margin-bottom:16px;opacity:.4}
 .empty-state-title{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--primary);margin-bottom:8px}
 
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 @media(min-width:640px){.modal-overlay{align-items:center;padding:24px}}
 .modal-overlay.open{opacity:1;visibility:visible}
 .modal{background:var(--card-1);border-radius:28px 28px 0 0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;transform:translateY(40px);transition:transform .4s;position:relative;border:1px solid var(--border-strong);box-shadow:var(--shadow-lg)}
 @media(min-width:640px){.modal{border-radius:28px;transform:scale(.94)}}
 .modal-overlay.open .modal{transform:translateY(0)}
 @media(min-width:640px){.modal-overlay.open .modal{transform:scale(1)}}
-.modal-close{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:color-mix(in srgb,var(--bg) 70%,transparent);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:18px;z-index:5;backdrop-filter:blur(8px);border:1px solid var(--border-strong)}
+.modal-close{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.8);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:18px;z-index:5;backdrop-filter:blur(8px);border:1px solid var(--border)}
 .modal-img-wrap{position:relative;aspect-ratio:1/1;overflow:hidden}
 .modal-img{width:100%;height:100%;object-fit:cover}
-.modal-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,color-mix(in srgb,var(--bg) 95%,transparent) 100%)}
+.modal-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--bg) 100%)}
 .modal-body{padding:0 24px 26px;margin-top:-40px;position:relative;z-index:2}
-.modal-cat{display:inline-block;background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--primary);padding:5px 14px;border-radius:30px;font-size:11.5px;font-weight:700;margin-bottom:10px;border:1px solid var(--border-strong)}
+.modal-cat{display:inline-block;background:rgba(225,6,0,.1);color:var(--primary);padding:5px 14px;border-radius:30px;font-size:11.5px;font-weight:700;margin-bottom:10px;border:1px solid var(--border-strong)}
 .modal-title{font-family:'Amiri',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:8px}
 .modal-desc{font-size:14.5px;color:var(--dim);margin-bottom:16px;line-height:1.7}
 .modal-badges{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
 .modal-badge{padding:5px 12px;border-radius:20px;font-size:11.5px;font-weight:800}
-.modal-badge.popular{background:linear-gradient(135deg,var(--red),var(--primary));color:#fff}
+.modal-badge.popular{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
 .modal-badge.offer{background:#D32F2F;color:#fff}
 .modal-price-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:18px}
 .modal-price{font-family:'Amiri',serif;font-size:32px;font-weight:700;color:var(--primary);display:flex;flex-direction:column;gap:2px}
@@ -227,15 +220,15 @@ img{display:block;max-width:100%}
 .qty-ctrl{display:flex;align-items:center;gap:12px;background:var(--bg-2);border-radius:50px;padding:6px;border:1px solid var(--border)}
 .qty-btn{width:38px;height:38px;border-radius:50%;background:var(--card-1);color:var(--primary);font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
 .qty-val{font-family:'Amiri',serif;font-size:20px;font-weight:700;color:var(--primary);min-width:28px;text-align:center}
-.add-btn{width:100%;padding:16px;border-radius:50px;background:linear-gradient(135deg,var(--red),var(--primary));color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
+.add-btn{width:100%;padding:16px;border-radius:50px;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
 
-.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:300;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:300;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .drawer-overlay.open{opacity:1;visibility:visible}
 .drawer{position:fixed;top:0;left:0;bottom:0;width:100%;max-width:460px;background:var(--bg-2);z-index:301;transform:translateX(-100%);transition:transform .4s;display:flex;flex-direction:column;border-left:1px solid var(--border)}
 .drawer.open{transform:translateX(0)}
 .drawer-header{padding:20px 22px;background:var(--card-1);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .drawer-title{font-family:'Amiri',serif;font-size:21px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:10px}
-.drawer-close{width:40px;height:40px;border-radius:50%;background:color-mix(in srgb,var(--primary) 10%,transparent);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:19px;border:1px solid var(--border-strong)}
+.drawer-close{width:40px;height:40px;border-radius:50%;background:var(--bg-2);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:19px;border:1px solid var(--border)}
 .drawer-body{flex:1;overflow-y:auto;padding:18px}
 .cart-item{display:flex;gap:12px;background:var(--card-1);border-radius:14px;padding:12px;margin-bottom:10px;border:1px solid var(--border)}
 .cart-item-img{width:76px;height:76px;border-radius:10px;object-fit:cover;flex-shrink:0}
@@ -247,7 +240,7 @@ img{display:block;max-width:100%}
 .cart-qty button{width:26px;height:26px;border-radius:50%;background:var(--card-1);color:var(--primary);font-size:16px;font-weight:900}
 .cart-qty span{font-family:'Amiri',serif;font-size:14px;font-weight:700;color:var(--primary);min-width:18px;text-align:center}
 .cart-item-total{font-family:'Amiri',serif;font-size:15px;font-weight:700;color:var(--primary)}
-.cart-remove{color:#E85D5D;font-size:11.5px;font-weight:700;padding:3px 8px;background:rgba(225,6,0,.15);border-radius:14px;border:1px solid rgba(225,6,0,.3);align-self:flex-start;margin-top:2px}
+.cart-remove{color:var(--primary);font-size:11.5px;font-weight:700;padding:3px 8px;background:rgba(225,6,0,.08);border-radius:14px;border:1px solid rgba(225,6,0,.2);align-self:flex-start;margin-top:2px}
 .cart-empty{text-align:center;padding:80px 20px;color:var(--dim)}
 .cart-empty-icon{font-size:80px;margin-bottom:18px;opacity:.3}
 .cart-empty-title{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--primary)}
@@ -260,9 +253,9 @@ img{display:block;max-width:100%}
 
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:6px}
-.form-label .req{color:var(--red)}
+.form-label .req{color:var(--primary)}
 .form-input,.form-textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-2);font-family:inherit;font-size:14.5px;color:var(--text);outline:none;transition:all .3s;resize:none}
-.form-input:focus,.form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 15%,transparent)}
+.form-input:focus,.form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(225,6,0,.1)}
 .form-textarea{min-height:80px}
 .form-note{font-size:12px;color:var(--dim);margin-top:6px}
 .send-order-btn{width:100%;margin-top:8px;padding:16px;border-radius:50px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:15.5px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px}
@@ -270,19 +263,19 @@ img{display:block;max-width:100%}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card-1);color:var(--text);padding:14px 26px;border-radius:50px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow-lg);z-index:500;opacity:0;transition:all .4s;pointer-events:none;display:flex;align-items:center;gap:10px;border:1px solid var(--border-strong);max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{background:linear-gradient(135deg,#25D366,#128C7E);border-color:rgba(37,211,102,.6);color:#fff}
-.toast.error{background:linear-gradient(135deg,#7A2828,#D32F2F);border-color:rgba(225,6,0,.6);color:#fff}
+.toast.error{background:linear-gradient(135deg,var(--primary),#B00500);border-color:rgba(225,6,0,.6);color:#fff}
 
 .footer{background:var(--card-1);text-align:center;padding:50px 20px 36px;margin-top:40px;border-top:1px solid var(--border)}
 .footer-ornament{color:var(--primary);opacity:.5;letter-spacing:10px;font-size:11px;margin-bottom:12px}
 
-.footer-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:50%;overflow:hidden;background:#3D0000;border:2px solid var(--border-strong);transition:all .3s;}
+.footer-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:50%;overflow:hidden;background:#FFFFFF;border:2px solid var(--border);transition:all .3s;}
 .footer-logo-wrap.custom-image-logo { background: transparent; border: none; border-radius: 0; overflow: visible; }
-.footer-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); }
+.footer-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); }
 .footer-logo-wrap svg { width:100%; height:100%; }
 
 .footer-addr{font-size:13.5px;color:var(--dim);margin-bottom:22px}
 .footer-socials{display:flex;justify-content:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
-.footer-social{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:1px solid var(--border-strong);border-radius:50px;color:var(--text);text-decoration:none;font-size:12.5px;font-weight:600}
+.footer-social{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:var(--bg-2);border:1px solid var(--border-strong);border-radius:50px;color:var(--text);text-decoration:none;font-size:12.5px;font-weight:600}
 .footer-copy{font-size:11.5px;color:var(--soft);padding-top:20px;border-top:1px solid var(--border)}
 
 /* ستايلات النصوص للوجو */
@@ -297,8 +290,8 @@ img{display:block;max-width:100%}
   <div class="header-inner">
     <a class="logo-wrap" href="#">
       <div class="logo" id="logoBox">
-        <!-- 1. اللوجو الملكي (SVG) -->
-        <div id="logoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+        <!-- 1. اللوجو الملكي (مخفي افتراضياً لمنع الوميض) -->
+        <div id="logoSvg" style="display:none;">
           <svg viewBox="0 0 200 200" width="100%" height="100%">
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
@@ -314,10 +307,10 @@ img{display:block;max-width:100%}
             </g>
           </svg>
         </div>
-        <!-- 2. الصورة المخصصة -->
+        <!-- 2. الصورة المخصصة (مخفية) -->
         <img id="logoImage" style="display:none" alt="Logo">
-        <!-- 3. اللوجو النصي -->
-        <div id="logoText" class="logo-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
+        <!-- 3. اللوجو النصي (مخفي) -->
+        <div id="logoText" class="logo-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
       </div>
       <div class="brand-text">
         <div class="brand-name" id="brandName">الباشا هورو</div>
@@ -338,8 +331,8 @@ img{display:block;max-width:100%}
   <div class="hero-glass">
     <div class="hero-ornament">✦ ✦ ✦</div>
     <div class="hero-logo-wrap" id="heroLogoWrap">
-      <!-- 1. اللوجو الملكي (SVG) -->
-      <div id="heroLogoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+      <!-- 1. اللوجو الملكي (مخفي افتراضياً) -->
+      <div id="heroLogoSvg" style="display:none;">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
           <defs>
             <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
@@ -355,10 +348,10 @@ img{display:block;max-width:100%}
           </g>
         </svg>
       </div>
-      <!-- 2. الصورة المخصصة -->
+      <!-- 2. الصورة المخصصة (مخفية) -->
       <img id="heroLogoImage" style="display:none" alt="Logo">
-      <!-- 3. اللوجو النصي -->
-      <div id="heroLogoText" class="hero-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
+      <!-- 3. اللوجو النصي (مخفي) -->
+      <div id="heroLogoText" class="hero-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
     </div>
     <div class="hero-divider"><div class="hero-divider-line"></div><span class="hero-divider-icon">✦</span><div class="hero-divider-line r"></div></div>
     <p class="hero-subtitle" id="heroSubtitle">عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق</p>
@@ -392,8 +385,8 @@ img{display:block;max-width:100%}
 <footer class="footer">
   <div class="footer-ornament">✦ ✦ ✦</div>
   <div class="footer-logo-wrap" id="footerLogoWrap">
-    <!-- 1. اللوجو الملكي (SVG) -->
-    <div id="footerLogoSvg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+    <!-- 1. اللوجو الملكي (مخفي افتراضياً) -->
+    <div id="footerLogoSvg" style="display:none;">
       <svg viewBox="0 0 200 200" width="100%" height="100%">
         <defs>
           <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
@@ -409,10 +402,10 @@ img{display:block;max-width:100%}
         </g>
       </svg>
     </div>
-    <!-- 2. الصورة المخصصة -->
+    <!-- 2. الصورة المخصصة (مخفية) -->
     <img id="footerLogoImage" style="display:none" alt="Logo">
-    <!-- 3. اللوجو النصي -->
-    <div id="footerLogoText" class="footer-text-style" style="display:none;background:linear-gradient(135deg, var(--red), var(--primary));color:#fff">الباشا<br>هورو</div>
+    <!-- 3. اللوجو النصي (مخفي) -->
+    <div id="footerLogoText" class="footer-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
   </div>
   <div class="footer-addr" id="footerAddr">عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق</div>
   <div class="footer-socials" id="footerSocials"></div>
@@ -492,7 +485,7 @@ const DEFAULT_SETTINGS = {
   deliveryNote: "خدمة التوصيل متوفرة داخل عرطوز", deliveryShow: true,
   deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }],
   heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
-  logoType: "svg", logoUrl: "", theme: "royal", menuLayout: "grid", categoryOrder: [],
+  logoType: "svg", logoUrl: "", theme: "white-red", menuLayout: "grid", categoryOrder: [],
   showPopular: true, showOffers: true, showPrepTime: true, showCallButton: true, confirmOrder: true
 };
 
@@ -508,7 +501,7 @@ function getEffectivePrice(item) {
   if (item.isOffer && item.offerPrice && Number(item.offerPrice) < Number(item.price)) return Number(item.offerPrice);
   return Number(item.price) || 0;
 }
-function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme || "royal"); }
+function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme || "white-red"); }
 
 function renderSettings() {
   applyTheme(settings.theme);
@@ -534,7 +527,7 @@ function renderSettings() {
   $("heroLogoSvg").style.display = "none"; $("heroLogoText").style.display = "none"; $("heroLogoImage").style.display = "none";
   $("footerLogoSvg").style.display = "none"; $("footerLogoText").style.display = "none"; $("footerLogoImage").style.display = "none";
   
-  // إزالة كلاس الصورة المخصصة (عشان نرجع الدائرة إذا اخترنا نص أو SVG)
+  // إزالة كلاس الصورة المخصصة
   $("logoBox").classList.remove("custom-image-logo");
   $("heroLogoWrap").classList.remove("custom-image-logo");
   $("footerLogoWrap").classList.remove("custom-image-logo");
@@ -542,7 +535,6 @@ function renderSettings() {
   if (logoType === "svg") {
     $("logoSvg").style.display = "flex"; $("heroLogoSvg").style.display = "flex"; $("footerLogoSvg").style.display = "flex";
   } else if (hasImg) {
-    // تفعيل كلاس السحر للصورة المخصصة (يشيل الخلفية والحدود)
     $("logoBox").classList.add("custom-image-logo");
     $("heroLogoWrap").classList.add("custom-image-logo");
     $("footerLogoWrap").classList.add("custom-image-logo");
@@ -551,9 +543,8 @@ function renderSettings() {
     $("heroLogoImage").src = settings.logoUrl; $("heroLogoImage").style.display = "block";
     $("footerLogoImage").src = settings.logoUrl; $("footerLogoImage").style.display = "block";
   } else {
-    // اللوجو النصي
     const isGold = logoType === "text-gold";
-    const bgStyle = isGold ? 'transparent' : 'linear-gradient(135deg, var(--red), var(--primary))';
+    const bgStyle = isGold ? 'transparent' : 'linear-gradient(135deg, var(--primary), var(--primary-2))';
     const colorStyle = isGold ? 'var(--primary)' : '#fff';
     const borderStyle = isGold ? '2px solid var(--primary)' : 'none';
 
@@ -628,8 +619,8 @@ function applyFilters() {
 }
 
 function buildCardHtml(item, layout) {
-  const img = item.imageUrl || "https://placehold.co/600x600/1A1A1A/D4AF37?text=Basha+Horo";
-  const onerr = `this.src='https://placehold.co/600x600/1A1A1A/D4AF37?text=Basha+Horo'`;
+  const img = item.imageUrl || "https://placehold.co/600x600/FFFFFF/E10600?text=Food";
+  const onerr = `this.src='https://placehold.co/600x600/FFFFFF/E10600?text=Food'`;
   const price = getEffectivePrice(item);
   const isOffer = item.isOffer && item.offerPrice && Number(item.offerPrice) < Number(item.price);
   const showPop = item.isPopular && settings.showPopular;
@@ -730,8 +721,8 @@ function renderMenu() {
 
 function openItemModal(item) {
   currentItem = item; currentQty = 1;
-  $("modalImg").src = item.imageUrl || "https://placehold.co/600x600/1A1A1A/D4AF37?text=Basha+Horo";
-  $("modalImg").onerror = function () { this.src = "https://placehold.co/600x600/1A1A1A/D4AF37?text=Basha+Horo"; };
+  $("modalImg").src = item.imageUrl || "https://placehold.co/600x600/FFFFFF/E10600?text=Food";
+  $("modalImg").onerror = function () { this.src = "https://placehold.co/600x600/FFFFFF/E10600?text=Food"; };
   $("modalCat").textContent = item.category || "";
   $("modalTitle").textContent = item.name || "";
   $("modalDesc").textContent = item.description || "طبق مميز من مطبخنا";
@@ -779,7 +770,7 @@ function updateCartUI() {
   }
   body.innerHTML = cart.map(c => `
     <div class="cart-item">
-      <img class="cart-item-img" src="${c.imageUrl || 'https://placehold.co/200x200/1A1A1A/D4AF37?text=K'}" onerror="this.src='https://placehold.co/200x200/1A1A1A/D4AF37?text=K'" alt="">
+      <img class="cart-item-img" src="${c.imageUrl || 'https://placehold.co/200x200/FFFFFF/E10600?text=K'}" onerror="this.src='https://placehold.co/200x200/FFFFFF/E10600?text=K'" alt="">
       <div class="cart-item-info">
         <div class="cart-item-name">${c.name}</div>
         <div class="cart-item-price">${fmt(c.price)} ل.س للوحدة</div>
