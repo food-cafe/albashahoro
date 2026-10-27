@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* الثيمات */
 :root, [data-theme="white-red"]{
   --bg:#FFFFFF; --bg-2:#F8F9FA; --bg-3:#F1F3F5; --card-1:#FFFFFF; --card-2:#F8F9FA;
   --primary:#E10600; --primary-2:#FF4D4D; --primary-3:#B00500;
@@ -62,20 +61,10 @@ img{display:block;max-width:100%}
 .header-inner{max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
 
-/* ستايل الدائرة الافتراضي */
 .logo{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--border-strong),0 6px 20px rgba(225,6,0,.15);position:relative;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#FFFFFF;transition:all .3s;}
-
-/* 🪄 السحر للصورة المخصصة: بيشيل الخلفية البيضا والظل */
 .logo.custom-image-logo { background: transparent; box-shadow: none; border-radius: 0; }
 .logo.custom-image-logo::before { display: none; }
-.logo.custom-image-logo img { 
-  width:100%; 
-  height:100%; 
-  object-fit:contain; 
-  mix-blend-mode: multiply; /* بيخفي الخلفية البيضاء للصور */
-  transform: scale(1.1); /* تكبير بسيط عشان تملأ المكان */
-}
-
+.logo.custom-image-logo img { width:100%; height:100%; object-fit:contain; mix-blend-mode: multiply; transform: scale(1.1); }
 .logo svg { width:100%; height:100%; }
 .logo::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border-strong);animation:logoPulse 3s ease-in-out infinite;pointer-events:none}
 @keyframes logoPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.08);opacity:.3}}
@@ -102,20 +91,12 @@ img{display:block;max-width:100%}
 .hero-glass::after{bottom:0}
 .hero-ornament{font-size:16px;color:var(--primary);opacity:.8;letter-spacing:10px;margin-bottom:8px}
 
-.hero-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:50%;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.15);transition:all .3s;background:#FFFFFF;border:2px solid var(--border)}
+/* 🪄 المخفي: عشان ما يظهر اللوجو القديم */
+.hero-logo-wrap{display:none;justify-content:center;align-items:center;margin:0 auto 16px;width:160px;height:160px;border-radius:50%;overflow:hidden;box-shadow:0 8px 30px rgba(225,6,0,.15);transition:all .3s;background:#FFFFFF;border:2px solid var(--border)}
 .hero-logo-wrap:hover{transform:scale(1.05)}
 @media(max-width:640px){.hero-logo-wrap{width:130px;height:130px}}
-
-/* 🪄 السحر للهيرو */
 .hero-logo-wrap.custom-image-logo { background: transparent; box-shadow: none; border: none; border-radius: 0; overflow: visible; }
-.hero-logo-wrap.custom-image-logo img { 
-  width:100%; 
-  height:100%; 
-  object-fit:contain; 
-  mix-blend-mode: multiply; 
-  transform: scale(1.15); 
-}
-
+.hero-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; mix-blend-mode: multiply; transform: scale(1.15); }
 .hero-logo-wrap svg { width:100%; height:100%; }
 
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 14px}
@@ -296,7 +277,8 @@ img{display:block;max-width:100%}
 .footer{background:var(--card-1);text-align:center;padding:50px 20px 36px;margin-top:40px;border-top:1px solid var(--border)}
 .footer-ornament{color:var(--primary);opacity:.5;letter-spacing:10px;font-size:11px;margin-bottom:12px}
 
-.footer-logo-wrap{display:flex;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:50%;overflow:hidden;background:#FFFFFF;border:2px solid var(--border);transition:all .3s;}
+/* 🪄 المخفي: عشان ما يظهر اللوجو القديم */
+.footer-logo-wrap{display:none;justify-content:center;align-items:center;margin:0 auto 12px;width:90px;height:90px;border-radius:50%;overflow:hidden;background:#FFFFFF;border:2px solid var(--border);transition:all .3s;}
 .footer-logo-wrap.custom-image-logo { background: transparent; border: none; border-radius: 0; overflow: visible; }
 .footer-logo-wrap.custom-image-logo img { width:100%; height:100%; object-fit:contain; mix-blend-mode: multiply; transform:scale(1.15); }
 .footer-logo-wrap svg { width:100%; height:100%; }
@@ -306,7 +288,6 @@ img{display:block;max-width:100%}
 .footer-social{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:var(--bg-2);border:1px solid var(--border-strong);border-radius:50px;color:var(--text);text-decoration:none;font-size:12.5px;font-weight:600}
 .footer-copy{font-size:11.5px;color:var(--soft);padding-top:20px;border-top:1px solid var(--border)}
 
-/* ستايلات النصوص للوجو */
 .logo-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:22px; text-align:center; line-height:1.1; border-radius:inherit;}
 .hero-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:32px; text-align:center; line-height:1.1; border-radius:inherit;}
 .footer-text-style { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Amiri',serif; font-weight:900; font-size:20px; text-align:center; line-height:1.1; border-radius:inherit;}
@@ -317,27 +298,10 @@ img{display:block;max-width:100%}
 <header class="header" id="header">
   <div class="header-inner">
     <a class="logo-wrap" href="#">
-      <div class="logo" id="logoBox">
-        <!-- 1. اللوجو الملكي (مخفي افتراضياً لمنع الوميض) -->
-        <div id="logoSvg" style="display:none;">
-          <svg viewBox="0 0 200 200" width="100%" height="100%">
-            <defs>
-              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
-              <radialGradient id="redGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#8B0000" /><stop offset="100%" stop-color="#3D0000" /></radialGradient>
-              <path id="topTextPath" d="M 35 100 A 65 65 0 0 1 165 100" fill="none" />
-              <path id="bottomTextPath" d="M 28 100 A 72 72 0 0 0 172 100" fill="none" />
-            </defs>
-            <circle cx="100" cy="100" r="98" fill="url(#goldGrad)" /><circle cx="100" cy="100" r="92" fill="url(#redGrad)" stroke="url(#goldGrad)" stroke-width="2" /><circle cx="100" cy="100" r="85" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="2 4" />
-            <text fill="url(#goldGrad)" font-family="Amiri" font-weight="bold" font-size="22"><textPath href="#topTextPath" startOffset="50%" text-anchor="middle">الباشا هورو</textPath></text>
-            <text fill="url(#goldGrad)" font-family="Arial" font-weight="bold" font-size="12" letter-spacing="1"><textPath href="#bottomTextPath" startOffset="50%" text-anchor="middle">AL BASHA HORO</textPath></text>
-            <g transform="translate(100, 100)">
-              <path d="M -15 5 L -35 25 M -15 5 L -5 15 M -10 0 L -30 20" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/><path d="M 15 5 L 35 25 M 15 5 L 5 15 M 10 0 L 30 20" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/><path d="M 0 -10 C -15 -20, -15 -35, 0 -45 C 15 -35, 15 -20, 0 -10 Z" fill="url(#goldGrad)"/><path d="M -20 -50 L 20 -50 L 15 -25 L -15 -25 Z" fill="#8B0000" stroke="url(#goldGrad)" stroke-width="2"/><path d="M 20 -50 L 25 -45" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round"/>
-            </g>
-          </svg>
-        </div>
-        <!-- 2. الصورة المخصصة (مخفية) -->
+      <!-- 🪄 مخفي عشان ما يطلع القديم -->
+      <div class="logo" id="logoBox" style="display:none;">
+        <div id="logoSvg" style="display:none;"></div>
         <img id="logoImage" style="display:none" alt="Logo">
-        <!-- 3. اللوجو النصي (مخفي) -->
         <div id="logoText" class="logo-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
       </div>
       <div class="brand-text">
@@ -358,27 +322,10 @@ img{display:block;max-width:100%}
   <div class="hero-pattern"></div>
   <div class="hero-glass">
     <div class="hero-ornament">✦ ✦ ✦</div>
+    <!-- 🪄 مخفي عشان ما يطلع القديم -->
     <div class="hero-logo-wrap" id="heroLogoWrap">
-      <!-- 1. اللوجو الملكي (مخفي افتراضياً) -->
-      <div id="heroLogoSvg" style="display:none;">
-        <svg viewBox="0 0 200 200" width="100%" height="100%">
-          <defs>
-            <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
-            <radialGradient id="redGrad2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#8B0000" /><stop offset="100%" stop-color="#3D0000" /></radialGradient>
-            <path id="topTextPath2" d="M 35 100 A 65 65 0 0 1 165 100" fill="none" />
-            <path id="bottomTextPath2" d="M 28 100 A 72 72 0 0 0 172 100" fill="none" />
-          </defs>
-          <circle cx="100" cy="100" r="98" fill="url(#goldGrad2)" /><circle cx="100" cy="100" r="92" fill="url(#redGrad2)" stroke="url(#goldGrad2)" stroke-width="2" /><circle cx="100" cy="100" r="85" fill="none" stroke="url(#goldGrad2)" stroke-width="1" stroke-dasharray="2 4" />
-          <text fill="url(#goldGrad2)" font-family="Amiri" font-weight="bold" font-size="22"><textPath href="#topTextPath2" startOffset="50%" text-anchor="middle">الباشا هورو</textPath></text>
-          <text fill="url(#goldGrad2)" font-family="Arial" font-weight="bold" font-size="12" letter-spacing="1"><textPath href="#bottomTextPath2" startOffset="50%" text-anchor="middle">AL BASHA HORO</textPath></text>
-          <g transform="translate(100, 100)">
-            <path d="M -15 5 L -35 25 M -15 5 L -5 15 M -10 0 L -30 20" stroke="url(#goldGrad2)" stroke-width="3" stroke-linecap="round"/><path d="M 15 5 L 35 25 M 15 5 L 5 15 M 10 0 L 30 20" stroke="url(#goldGrad2)" stroke-width="3" stroke-linecap="round"/><path d="M 0 -10 C -15 -20, -15 -35, 0 -45 C 15 -35, 15 -20, 0 -10 Z" fill="url(#goldGrad2)"/><path d="M -20 -50 L 20 -50 L 15 -25 L -15 -25 Z" fill="#8B0000" stroke="url(#goldGrad2)" stroke-width="2"/><path d="M 20 -50 L 25 -45" stroke="url(#goldGrad2)" stroke-width="2" stroke-linecap="round"/>
-          </g>
-        </svg>
-      </div>
-      <!-- 2. الصورة المخصصة (مخفية) -->
+      <div id="heroLogoSvg" style="display:none;"></div>
       <img id="heroLogoImage" style="display:none" alt="Logo">
-      <!-- 3. اللوجو النصي (مخفي) -->
       <div id="heroLogoText" class="hero-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
     </div>
     <div class="hero-divider"><div class="hero-divider-line"></div><span class="hero-divider-icon">✦</span><div class="hero-divider-line r"></div></div>
@@ -412,27 +359,10 @@ img{display:block;max-width:100%}
 
 <footer class="footer">
   <div class="footer-ornament">✦ ✦ ✦</div>
+  <!-- 🪄 مخفي عشان ما يطلع القديم -->
   <div class="footer-logo-wrap" id="footerLogoWrap">
-    <!-- 1. اللوجو الملكي (مخفي افتراضياً) -->
-    <div id="footerLogoSvg" style="display:none;">
-      <svg viewBox="0 0 200 200" width="100%" height="100%">
-        <defs>
-          <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F5D76E" /><stop offset="50%" stop-color="#D4AF37" /><stop offset="100%" stop-color="#A67C00" /></linearGradient>
-          <radialGradient id="redGrad3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#8B0000" /><stop offset="100%" stop-color="#3D0000" /></radialGradient>
-          <path id="topTextPath3" d="M 35 100 A 65 65 0 0 1 165 100" fill="none" />
-          <path id="bottomTextPath3" d="M 28 100 A 72 72 0 0 0 172 100" fill="none" />
-        </defs>
-        <circle cx="100" cy="100" r="98" fill="url(#goldGrad3)" /><circle cx="100" cy="100" r="92" fill="url(#redGrad3)" stroke="url(#goldGrad3)" stroke-width="2" /><circle cx="100" cy="100" r="85" fill="none" stroke="url(#goldGrad3)" stroke-width="1" stroke-dasharray="2 4" />
-        <text fill="url(#goldGrad3)" font-family="Amiri" font-weight="bold" font-size="22"><textPath href="#topTextPath3" startOffset="50%" text-anchor="middle">الباشا هورو</textPath></text>
-        <text fill="url(#goldGrad3)" font-family="Arial" font-weight="bold" font-size="12" letter-spacing="1"><textPath href="#bottomTextPath3" startOffset="50%" text-anchor="middle">AL BASHA HORO</textPath></text>
-        <g transform="translate(100, 100)">
-          <path d="M -15 5 L -35 25 M -15 5 L -5 15 M -10 0 L -30 20" stroke="url(#goldGrad3)" stroke-width="3" stroke-linecap="round"/><path d="M 15 5 L 35 25 M 15 5 L 5 15 M 10 0 L 30 20" stroke="url(#goldGrad3)" stroke-width="3" stroke-linecap="round"/><path d="M 0 -10 C -15 -20, -15 -35, 0 -45 C 15 -35, 15 -20, 0 -10 Z" fill="url(#goldGrad3)"/><path d="M -20 -50 L 20 -50 L 15 -25 L -15 -25 Z" fill="#8B0000" stroke="url(#goldGrad3)" stroke-width="2"/><path d="M 20 -50 L 25 -45" stroke="url(#goldGrad3)" stroke-width="2" stroke-linecap="round"/>
-        </g>
-      </svg>
-    </div>
-    <!-- 2. الصورة المخصصة (مخفية) -->
+    <div id="footerLogoSvg" style="display:none;"></div>
     <img id="footerLogoImage" style="display:none" alt="Logo">
-    <!-- 3. اللوجو النصي (مخفي) -->
     <div id="footerLogoText" class="footer-text-style" style="display:none;background:linear-gradient(135deg, var(--primary), var(--primary-2));color:#fff">الباشا<br>هورو</div>
   </div>
   <div class="footer-addr" id="footerAddr">عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق</div>
@@ -503,17 +433,14 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const DEFAULT_SETTINGS = {
-  name: "الباشا هورو", 
-  subtitle: "عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق",
-  status: "مفتوح من 10 صباحاً حتى 2", 
-  statusType: "open",
+  name: "الباشا هورو", subtitle: "عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق",
+  status: "مفتوح من 10 صباحاً حتى 2", statusType: "open",
   whatsapp: "963935462965", whatsappDisplay: "0935462965",
   phone: "963116784594", phoneDisplay: "011-678-4594",
   phone2: "", phone2Display: "",
   address: "عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=عرطوز+جامع+أبو+بكر+الصديق+دمشق",
-  deliveryNote: "خدمة التوصيل متوفرة في دمشق", 
-  deliveryShow: true,
+  deliveryNote: "خدمة التوصيل متوفرة في دمشق", deliveryShow: true,
   deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }],
   heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
   logoType: "svg", logoUrl: "", theme: "white-red", menuLayout: "grid", categoryOrder: [],
@@ -549,16 +476,18 @@ function renderSettings() {
 
   if (settings.heroImage) $("heroBg").style.backgroundImage = `url('${settings.heroImage}')`;
 
-  // 🧠 نظام اللوجو الذكي
+  // 🧠 إظهار اللوجو بعد جلب البيانات (لمنع الوميض)
   const logoType = settings.logoType || "svg";
   const hasImg = logoType === "image" && settings.logoUrl;
 
-  // إخفاء كل شيء أولاً
+  $("logoBox").style.display = "flex";
+  $("heroLogoWrap").style.display = "flex";
+  $("footerLogoWrap").style.display = "flex";
+
   $("logoSvg").style.display = "none"; $("logoText").style.display = "none"; $("logoImage").style.display = "none";
   $("heroLogoSvg").style.display = "none"; $("heroLogoText").style.display = "none"; $("heroLogoImage").style.display = "none";
   $("footerLogoSvg").style.display = "none"; $("footerLogoText").style.display = "none"; $("footerLogoImage").style.display = "none";
   
-  // إزالة كلاس الصورة المخصصة
   $("logoBox").classList.remove("custom-image-logo");
   $("heroLogoWrap").classList.remove("custom-image-logo");
   $("footerLogoWrap").classList.remove("custom-image-logo");
