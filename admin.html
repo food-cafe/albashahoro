@@ -351,7 +351,6 @@ img{display:block;max-width:100%}
     <section class="panel" id="panel-design">
       <div class="panel-header"><h1 class="panel-title">🎨 التصميم والعروض</h1><p class="panel-sub">تحكمي بشكل الموقع والميزات الظاهرة للزبون</p></div>
       
-      <!-- قسم اللوجو المحدث -->
       <div class="card-box">
         <div class="card-box-title">🎩 شكل الشعار (اللوجو)</div>
         <div class="layout-selector" style="grid-template-columns: repeat(4, 1fr);">
@@ -419,4 +418,273 @@ img{display:block;max-width:100%}
         <div class="card-box-title">📐 شكل عرض القائمة</div>
         <div class="layout-selector">
           <label class="layout-option" data-layout="grid"><input type="radio" name="menuLayout" value="grid"><div class="layout-check">✓</div><div class="layout-icon">▦</div><div class="layout-name">شبكة</div></label>
-          <label class="layout-option" data-layout="sections"><input type="radio"
+          <label class="layout-option" data-layout="sections"><input type="radio" name="menuLayout" value="sections"><div class="layout-check">✓</div><div class="layout-icon">📑</div><div class="layout-name">أقسام</div></label>
+          <label class="layout-option" data-layout="list"><input type="radio" name="menuLayout" value="list"><div class="layout-check">✓</div><div class="layout-icon">☰</div><div class="layout-name">قائمة</div></label>
+        </div>
+      </div>
+
+      <div class="card-box">
+        <div class="card-box-title">🔄 ترتيب الأقسام</div>
+        <div id="categoryOrderList"></div>
+        <button class="btn btn-ghost btn-sm" id="resetCategoryOrderBtn" style="margin-top:10px">🔄 إعادة الترتيب</button>
+      </div>
+
+      <div class="card-box">
+        <div class="card-box-title">✨ الميزات الظاهرة للزبون</div>
+        <div class="toggle-group">
+          <div class="toggle-row"><div class="toggle-info"><div class="toggle-title">⭐ قسم "الأكثر طلباً"</div></div><label class="toggle-switch"><input type="checkbox" id="setShowPopular"><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-info"><div class="toggle-title">🔥 قسم "عروض اليوم"</div></div><label class="toggle-switch"><input type="checkbox" id="setShowOffers"><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-info"><div class="toggle-title">🕐 وقت التحضير</div></div><label class="toggle-switch"><input type="checkbox" id="setShowPrepTime"><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-info"><div class="toggle-title">📞 زر "اتصل مباشرة"</div></div><label class="toggle-switch"><input type="checkbox" id="setShowCallButton"><span class="toggle-slider"></span></label></div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" id="saveDesignBtn">💾 حفظ إعدادات التصميم</button>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="panel" id="panel-settings">
+      <div class="panel-header"><h1 class="panel-title">⚙️ الإعدادات</h1><p class="panel-sub">معلومات المطعم، الأرقام، والعنوان</p></div>
+      <div class="card-box">
+        <div class="card-box-title">🏪 معلومات النشاط</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">اسم المطعم</label><input type="text" class="form-input" id="setName"></div>
+          <div class="form-group"><label class="form-label">العنوان الفرعي</label><input type="text" class="form-input" id="setSubtitle"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">نص الحالة</label><input type="text" class="form-input" id="setStatus"></div>
+          <div class="form-group"><label class="form-label">لون الحالة</label><select class="form-select" id="setStatusType"><option value="open">🟢 مفتوح</option><option value="orders">🟡 طلبات</option><option value="closed">🔴 مغلق</option></select></div>
+        </div>
+        <div class="form-group"><label class="form-label">رابط صورة الواجهة</label><input type="text" class="form-input" id="setHeroImage"></div>
+      </div>
+      <div class="card-box">
+        <div class="card-box-title">📞 أرقام التواصل</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">واتساب</label><input type="text" class="form-input" id="setWhatsapp"></div>
+          <div class="form-group"><label class="form-label">واتساب (نص)</label><input type="text" class="form-input" id="setWhatsappDisplay"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">هاتف 1</label><input type="text" class="form-input" id="setPhone"></div>
+          <div class="form-group"><label class="form-label">هاتف 1 (نص)</label><input type="text" class="form-input" id="setPhoneDisplay"></div>
+        </div>
+      </div>
+      <div class="card-box">
+        <div class="card-box-title">📍 العنوان والخريطة</div>
+        <div class="form-group"><label class="form-label">العنوان</label><input type="text" class="form-input" id="setAddress"></div>
+        <div class="form-group"><label class="form-label">رابط الخريطة</label><input type="text" class="form-input" id="setMapUrl"></div>
+      </div>
+      <div class="card-box">
+        <div class="card-box-title">🛵 التوصيل</div>
+        <div class="toggle-row" style="margin-bottom:16px"><div class="toggle-info"><div class="toggle-title">عرض قسم التوصيل</div></div><label class="toggle-switch"><input type="checkbox" id="setDeliveryShow"><span class="toggle-slider"></span></label></div>
+        <div class="form-group"><label class="form-label">العنوان</label><input type="text" class="form-input" id="setDeliveryNote"></div>
+        <div id="deliveryList"></div>
+        <button class="btn btn-ghost btn-sm" id="addDeliveryBtn" style="margin-top:8px">➕ إضافة خيار</button>
+      </div>
+      <button class="btn btn-primary btn-full" id="saveSettingsBtn">💾 حفظ الإعدادات</button>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = { 
+    apiKey: "AIzaSyCkNhXAMRZJpoPoWmEOCxeKVJAGgmn1tlY", 
+    authDomain: "albashahoro-d3674.firebaseapp.com", 
+    projectId: "albashahoro-d3674", 
+    storageBucket: "albashahoro-d3674.firebasestorage.app", 
+    messagingSenderId: "1019540135757", 
+    appId: "1:1019540135757:web:d30c4c4e49786addd32104" 
+  };
+  
+  const app = initializeApp(firebaseConfig); 
+  const db = getFirestore(app); 
+  const auth = getAuth(app);
+  const CLOUD_NAME = "vfdkxutu"; 
+  const UPLOAD_PRESET = "albashahoro"; 
+  const ADMIN_EMAIL = "admin@albashahoro.com";
+
+  const DEFAULT_SETTINGS = {
+    name: "الباشا هورو", subtitle: "عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق", 
+    status: "مفتوح من 10 صباحاً حتى 2", statusType: "open",
+    whatsapp: "963935462965", whatsappDisplay: "0935462965", 
+    phone: "963116784594", phoneDisplay: "011-678-4594",
+    phone2: "", phone2Display: "", address: "عرطوز - الشارع العام - مقابل جامع أبو بكر الصديق",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=عرطوز+جامع+أبو+بكر+الصديق+دمشق",
+    deliveryNote: "خدمة التوصيل متوفرة في دمشق", deliveryShow: true,
+    deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }],
+    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80",
+    logoType: "svg", logoUrl: "", theme: "white-red", menuLayout: "grid", categoryOrder: [],
+    showPopular: true, showOffers: true, showPrepTime: true, showCallButton: true
+  };
+
+  let allItems = [], editingId = null, currentImageUrl = "", settings = { ...DEFAULT_SETTINGS };
+  let deliveryOptions = [], categoryOrder = [], listenersActive = false, unsubMenu = null, unsubSettings = null, sortableInstance = null;
+  const $ = id => document.getElementById(id); const fmt = n => Number(n || 0).toLocaleString('en-US'); const genId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+
+  function showToast(msg, type = "") { const t = $("toast"); t.textContent = msg; t.className = "toast show " + type; clearTimeout(t._tid); t._tid = setTimeout(() => t.className = "toast " + type, 3000); }
+  function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme || "white-red"); }
+
+  $("loginBtn").onclick = async () => {
+    const pass = $("loginPassword").value, errBox = $("loginErr"); errBox.classList.remove("show");
+    if (!pass) { errBox.textContent = "⚠️ الرجاء إدخال كلمة المرور"; errBox.classList.add("show"); return; }
+    const btn = $("loginBtn"); btn.disabled = true; btn.textContent = "⏳ جاري التحقق...";
+    try { 
+      await signInWithEmailAndPassword(auth, ADMIN_EMAIL, pass); 
+    } catch (err) { 
+      console.error(err);
+      let msg = "❌ فشل تسجيل الدخول"; 
+      if (err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") msg = "❌ كلمة المرور غير صحيحة"; 
+      errBox.textContent = msg; errBox.classList.add("show"); btn.disabled = false; btn.textContent = "✦ تسجيل الدخول"; 
+    }
+  };
+  
+  $("loginPassword").addEventListener("keydown", e => { if (e.key === "Enter") $("loginBtn").click(); });
+  $("logoutBtn").onclick = async () => { if (confirm("هل أنت متأكد من تسجيل الخروج؟")) await signOut(auth); };
+
+  onAuthStateChanged(auth, user => {
+    if (user && user.email === ADMIN_EMAIL) { 
+      $("loginWrap").style.display = "none"; 
+      $("adminApp").classList.add("show"); 
+      $("loginPassword").value = ""; 
+      $("loginBtn").disabled = false; 
+      $("loginBtn").textContent = "✦ تسجيل الدخول"; 
+      startListeners(); 
+    } else { 
+      $("loginWrap").style.display = "flex"; 
+      $("adminApp").classList.remove("show"); 
+      $("loginBtn").disabled = false; 
+      $("loginBtn").textContent = "✦ تسجيل الدخول"; 
+      stopListeners(); 
+    }
+  });
+
+  function startListeners() {
+    if (listenersActive) return; listenersActive = true;
+    unsubMenu = onSnapshot(doc(db, "menu", "all"), snap => { 
+      if (snap.exists()) { allItems = Array.isArray(snap.data().items) ? snap.data().items : []; } else allItems = []; 
+      renderItemsList(); renderStats(); renderCategoryDatalist(); 
+    });
+    unsubSettings = onSnapshot(doc(db, "settings", "info"), snap => {
+      if (snap.exists()) { 
+        settings = { ...DEFAULT_SETTINGS, ...snap.data() }; 
+        deliveryOptions = Array.isArray(settings.deliveryOptions) ? [...settings.deliveryOptions] : []; 
+        categoryOrder = Array.isArray(settings.categoryOrder) ? [...settings.categoryOrder] : []; 
+      }
+      else { settings = { ...DEFAULT_SETTINGS }; deliveryOptions = [...DEFAULT_SETTINGS.deliveryOptions]; categoryOrder = []; }
+      applyTheme(settings.theme); loadSettingsForm(); loadDesignForm();
+    });
+  }
+  function stopListeners() { if (unsubMenu) unsubMenu(); if (unsubSettings) unsubSettings(); listenersActive = false; }
+
+  document.querySelectorAll(".tab-btn").forEach(btn => { btn.onclick = () => { document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); btn.classList.add("active"); $("panel-" + btn.dataset.tab).classList.add("active"); window.scrollTo({ top: 0, behavior: "smooth" }); }; });
+
+  function renderStats() { $("statTotal").textContent = allItems.length; $("statCats").textContent = new Set(allItems.map(i => i.category).filter(Boolean)).size; $("statPopular").textContent = allItems.filter(i => i.isPopular).length; $("statOffers").textContent = allItems.filter(i => i.isOffer).length; }
+
+  function renderCategoryDatalist() { const cats = [...new Set(allItems.map(i => i.category).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ar')); $("catList").innerHTML = cats.map(c => `<option value="${c}">`).join(""); renderCategoryOrderList(); }
+  function getCategoriesInOrder() { const cats = [...new Set(allItems.map(i => i.category).filter(Boolean))]; const inOrder = categoryOrder.filter(c => cats.includes(c)); return [...inOrder, ...cats.filter(c => !categoryOrder.includes(c)).sort((a, b) => a.localeCompare(b, 'ar'))]; }
+
+  function renderCategoryOrderList() {
+    const box = $("categoryOrderList"); if (!box) return; const cats = getCategoriesInOrder();
+    if (!cats.length) { box.innerHTML = `<div class="empty-box" style="padding:16px"><div class="empty-box-text">لا توجد أقسام.</div></div>`; return; }
+    box.innerHTML = cats.map((cat, i) => `
+      <div class="item-row" data-cat="${cat}" style="padding:10px 12px;margin-bottom:6px;user-select:none;touch-action:pan-y">
+        <span class="drag-handle" style="font-size:22px;color:var(--primary);cursor:grab;padding:2px 6px">☰</span>
+        <span class="cat-num" style="font-weight:700;color:var(--primary);min-width:26px">${i + 1}.</span>
+        <div class="item-row-info"><div class="item-row-name" style="font-size:15px">${cat}</div></div>
+        <div class="item-row-actions"><button class="icon-btn edit" data-up="${i}" ${i === 0 ? 'disabled' : ''}>⬆️</button><button class="icon-btn edit" data-down="${i}" ${i === cats.length - 1 ? 'disabled' : ''}>⬇️</button></div>
+      </div>`).join("");
+    box.querySelectorAll("[data-up]").forEach(b => b.onclick = async (e) => { e.stopPropagation(); const i = +b.dataset.up; if (i <= 0) return; const all = getCategoriesInOrder(); categoryOrder = [...all]; [categoryOrder[i - 1], categoryOrder[i]] = [categoryOrder[i], categoryOrder[i - 1]]; renderCategoryOrderList(); await saveCategoryOrder(); });
+    box.querySelectorAll("[data-down]").forEach(b => b.onclick = async (e) => { e.stopPropagation(); const i = +b.dataset.down; const all = getCategoriesInOrder(); categoryOrder = [...all]; if (i >= all.length - 1) return; [categoryOrder[i], categoryOrder[i + 1]] = [categoryOrder[i + 1], categoryOrder[i]]; renderCategoryOrderList(); await saveCategoryOrder(); });
+    if (sortableInstance) { sortableInstance.destroy(); sortableInstance = null; }
+    if (window.Sortable) { sortableInstance = new Sortable(box, { animation: 200, handle: '.drag-handle', ghostClass: 'dragging-ghost', chosenClass: 'dragging-chosen', filter: '.icon-btn', preventOnFilter: false, onEnd: async () => { categoryOrder = [...box.querySelectorAll('.item-row')].map(el => el.dataset.cat); await saveCategoryOrder(); [...box.querySelectorAll('.item-row')].forEach((el, i) => { const numSpan = el.querySelector('.cat-num'); if (numSpan) numSpan.textContent = (i + 1) + '.'; const upBtn = el.querySelector("[data-up]"); if (upBtn) upBtn.disabled = i === 0; const downBtn = el.querySelector("[data-down]"); if (downBtn) downBtn.disabled = i === categoryOrder.length - 1; }); } }); }
+  }
+  async function saveCategoryOrder() { try { await setDoc(doc(db, "settings", "info"), { categoryOrder }, { merge: true }); showToast("✓ تم حفظ الترتيب", "success"); } catch (err) { showToast("❌ فشل الحفظ", "error"); } }
+  $("resetCategoryOrderBtn").onclick = async () => { if (!confirm("إعادة الترتيب الافتراضي؟")) return; categoryOrder = []; await setDoc(doc(db, "settings", "info"), { categoryOrder: [] }, { merge: true }); renderCategoryOrderList(); showToast("✓ تم إعادة الترتيب", "success"); };
+
+  function renderItemsList() {
+    const q = ($("searchItems").value || "").trim().toLowerCase(); let list = [...allItems]; if (q) list = list.filter(i => (i.name || "").toLowerCase().includes(q) || (i.category || "").toLowerCase().includes(q)); list.sort((a, b) => (a.category || '').localeCompare(b.category || '', 'ar')); $("itemsCountBadge").textContent = allItems.length;
+    const box = $("itemsList"); if (!list.length) { box.innerHTML = `<div class="empty-box"><div class="empty-box-icon">🍽️</div><div class="empty-box-title">${q ? 'لا نتائج' : 'لا توجد أصناف'}</div></div>`; return; }
+    box.innerHTML = list.map(i => { const isOffer = i.isOffer && i.offerPrice && Number(i.offerPrice) < Number(i.price); return `<div class="item-row"><img class="item-row-img" src="${i.imageUrl || 'https://placehold.co/200x200/F8F9FA/E10600?text=Food'}" onerror="this.src='https://placehold.co/200x200/F8F9FA/E10600?text=Food'" alt=""><div class="item-row-info"><div class="item-row-name">${i.name || ''}${i.isPopular ? '<span class="item-row-tag popular">⭐ الأكثر طلباً</span>' : ''}${isOffer ? '<span class="item-row-tag offer">🔥 عرض</span>' : ''}</div><div class="item-row-meta"><span class="item-row-cat">${i.category || ''}</span><span class="item-row-price">${isOffer ? `<span style="text-decoration:line-through;color:var(--soft);font-size:11.5px;margin-right:4px">${fmt(i.price)}</span>` : ''}${fmt(isOffer ? i.offerPrice : i.price)} ل.س</span></div></div><div class="item-row-actions"><button class="icon-btn edit" data-edit="${i.id}">✏️</button><button class="icon-btn del" data-del="${i.id}">🗑️</button></div></div>`; }).join("");
+    box.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => startEdit(b.dataset.edit)); box.querySelectorAll("[data-del]").forEach(b => b.onclick = () => deleteItem(b.dataset.del));
+  }
+  $("searchItems").addEventListener("input", renderItemsList);
+
+  function compressImage(file, maxSize = 800, quality = 0.8) { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = e => { const img = new Image(); img.onload = () => { let { width, height } = img; if (width > maxSize || height > maxSize) { const ratio = Math.min(maxSize / width, maxSize / height); width = Math.round(width * ratio); height = Math.round(height * ratio); } const canvas = document.createElement("canvas"); canvas.width = width; canvas.height = height; canvas.getContext("2d").drawImage(img, 0, 0, width, height); canvas.toBlob(blob => blob ? resolve(blob) : reject("فشل"), "image/jpeg", quality); }; img.onerror = () => reject("ملف غير صالح"); img.src = e.target.result; }; reader.readAsDataURL(file); }); }
+  async function uploadImage(blob) { const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`; const fd = new FormData(); fd.append("file", blob); fd.append("upload_preset", UPLOAD_PRESET); const res = await fetch(url, { method: "POST", body: fd }); if (!res.ok) throw new Error("فشل الرفع"); const data = await res.json(); return data.secure_url; }
+
+  $("itemImage").addEventListener("change", async e => { const file = e.target.files[0]; if (!file) return; if (!file.type.startsWith("image/")) return showToast("⚠️ الرجاء اختيار صورة", "error"); const prog = $("uploadProgress"), bar = $("uploadProgressBar"); prog.classList.add("show"); bar.style.width = "15%"; try { const blob = await compressImage(file); $("imgPreview").innerHTML = `<img src="${URL.createObjectURL(blob)}" alt="">`; bar.style.width = "55%"; const url = await uploadImage(blob); bar.style.width = "100%"; currentImageUrl = url; $("itemImageUrl").value = url; $("imgPreview").innerHTML = `<img src="${url}" alt="">`; showToast("✓ تم رفع الصورة", "success"); setTimeout(() => { prog.classList.remove("show"); bar.style.width = "0%"; }, 800); } catch (err) { showToast("❌ فشل رفع الصورة", "error"); prog.classList.remove("show"); } e.target.value = ""; });
+
+  $("customLogoImage").addEventListener("change", async e => {
+    const file = e.target.files[0]; if (!file) return;
+    if (!file.type.startsWith("image/")) return showToast("⚠️ الرجاء اختيار صورة", "error");
+    const prog = $("logoUploadProgress"), bar = $("logoUploadProgressBar");
+    prog.classList.add("show"); bar.style.width = "15%";
+    try {
+      const blob = await compressImage(file, 400, 0.9);
+      $("logoImgPreview").innerHTML = `<img src="${URL.createObjectURL(blob)}" style="object-fit:contain;border-radius:50%;" alt="">`;
+      bar.style.width = "55%";
+      const url = await uploadImage(blob);
+      bar.style.width = "100%";
+      $("setLogoUrl").value = url;
+      $("logoImgPreview").innerHTML = `<img src="${url}" style="object-fit:contain;border-radius:50%;" alt="">`;
+      showToast("✓ تم رفع اللوجو، لا تنسي الضغط على حفظ", "success");
+      setTimeout(() => { prog.classList.remove("show"); bar.style.width = "0%"; }, 800);
+    } catch (err) { showToast("❌ فشل رفع اللوجو", "error"); prog.classList.remove("show"); }
+    e.target.value = "";
+  });
+
+  $("saveItemBtn").onclick = async () => {
+    const category = $("itemCategory").value.trim(), name = $("itemName").value.trim(); const priceRaw = $("itemPrice").value.trim(), offerPriceRaw = $("itemOfferPrice").value.trim(); const prepTimeRaw = $("itemPrepTime").value.trim(), description = $("itemDesc").value.trim(); const isPopular = $("itemIsPopular").checked, isOffer = $("itemIsOffer").checked; const imageUrl = $("itemImageUrl").value.trim() || currentImageUrl;
+    if (!category || !name || priceRaw === "") return showToast("⚠️ أكمل الحقول المطلوبة", "error"); if (isOffer && (offerPriceRaw === "" || Number(offerPriceRaw) >= Number(priceRaw))) return showToast("⚠️ سعر العرض غير صالح", "error");
+    const btn = $("saveItemBtn"); btn.disabled = true; btn.textContent = "⏳ جاري الحفظ...";
+    try { const itemData = { category, name, price: Number(priceRaw), description, imageUrl, isPopular, isOffer, offerPrice: isOffer ? Number(offerPriceRaw) : 0, prepTime: Number(prepTimeRaw) || 0 }; let newItems; if (editingId) newItems = allItems.map(i => i.id === editingId ? { ...i, ...itemData } : i); else newItems = [...allItems, { id: genId(), ...itemData, createdAt: Date.now() }]; await setDoc(doc(db, "menu", "all"), { items: newItems }); showToast(editingId ? "✓ تم تعديل الصنف" : "✓ تمت إضافة الصنف", "success"); resetForm(); } catch (err) { showToast("❌ فشل الحفظ", "error"); } finally { btn.disabled = false; btn.textContent = "💾 حفظ الصنف"; }
+  };
+
+  function startEdit(id) { const item = allItems.find(i => i.id === id); if (!item) return; editingId = id; $("itemCategory").value = item.category || ""; $("itemName").value = item.name || ""; $("itemPrice").value = item.price || ""; $("itemOfferPrice").value = item.offerPrice || ""; $("itemPrepTime").value = item.prepTime || ""; $("itemDesc").value = item.description || ""; $("itemIsPopular").checked = !!item.isPopular; $("itemIsOffer").checked = !!item.isOffer; currentImageUrl = item.imageUrl || ""; $("itemImageUrl").value = item.imageUrl || ""; $("imgPreview").innerHTML = item.imageUrl ? `<img src="${item.imageUrl}">` : `<div class="image-preview-icon">📷</div>`; $("formTitle").textContent = "✏️ تعديل صنف"; $("saveItemBtn").textContent = "💾 حفظ التعديلات"; $("cancelEditBtn").style.display = "inline-flex"; document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active")); document.querySelectorAll(".panel").forEach(p => p.classList.remove("active")); document.querySelector('.tab-btn[data-tab="items"]').classList.add("active"); $("panel-items").classList.add("active"); window.scrollTo({ top: 0, behavior: "smooth" }); }
+  $("cancelEditBtn").onclick = resetForm;
+  function resetForm() { editingId = null; currentImageUrl = ""; $("itemCategory").value = ""; $("itemName").value = ""; $("itemPrice").value = ""; $("itemOfferPrice").value = ""; $("itemPrepTime").value = ""; $("itemDesc").value = ""; $("itemIsPopular").checked = false; $("itemIsOffer").checked = false; $("itemImageUrl").value = ""; $("itemImage").value = ""; $("imgPreview").innerHTML = `<div class="image-preview-icon">📷</div>`; $("formTitle").textContent = "إضافة صنف جديد"; $("saveItemBtn").textContent = "💾 حفظ الصنف"; $("cancelEditBtn").style.display = "none"; $("uploadProgress").classList.remove("show"); }
+  async function deleteItem(id) { const item = allItems.find(i => i.id === id); if (!item || !confirm(`حذف "${item.name}"؟`)) return; try { await setDoc(doc(db, "menu", "all"), { items: allItems.filter(i => i.id !== id) }); showToast("✓ تم الحذف", "success"); if (editingId === id) resetForm(); } catch (err) { showToast("❌ فشل الحذف", "error"); } }
+
+  function loadDesignForm() {
+    const theme = settings.theme || "white-red";
+    document.querySelectorAll(".theme-option").forEach(opt => { const input = opt.querySelector('input[name="theme"]'); if (opt.dataset.theme === theme) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; } });
+    const layout = settings.menuLayout || "grid";
+    document.querySelectorAll(".layout-option[data-layout]").forEach(opt => { const input = opt.querySelector('input[name="menuLayout"]'); if (opt.dataset.layout === layout) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; } });
+    const logoType = settings.logoType || "svg";
+    document.querySelectorAll(".layout-option[data-logo]").forEach(opt => { const input = opt.querySelector('input[name="logoType"]'); if (opt.dataset.logo === logoType) { opt.classList.add("active"); input.checked = true; } else { opt.classList.remove("active"); input.checked = false; } });
+    
+    $("setLogoUrl").value = settings.logoUrl || "";
+    if (settings.logoUrl) {
+      $("logoImgPreview").innerHTML = `<img src="${settings.logoUrl}" style="object-fit:contain;border-radius:50%;" alt="">`;
+    } else {
+      $("logoImgPreview").innerHTML = `<div class="image-preview-icon">🖼️</div>`;
+    }
+    $("logoUrlGroup").style.display = logoType === "image" ? "block" : "none";
+
+    $("setShowPopular").checked = settings.showPopular !== false; $("setShowOffers").checked = settings.showOffers !== false; $("setShowPrepTime").checked = settings.showPrepTime !== false; $("setShowCallButton").checked = settings.showCallButton !== false;
+    renderCategoryOrderList();
+  }
+
+  document.querySelectorAll(".theme-option").forEach(opt => { opt.onclick = e => { e.preventDefault(); document.querySelectorAll(".theme-option").forEach(o => o.classList.remove("active")); opt.classList.add("active"); opt.querySelector('input').checked = true; applyTheme(opt.dataset.theme); }; });
+  document.querySelectorAll(".layout-option[data-layout]").forEach(opt => { opt.onclick = e => { e.preventDefault(); document.querySelectorAll(".layout-option[data-layout]").forEach(o => o.classList.remove("active")); opt.classList.add("active"); opt.querySelector('input').checked = true; }; });
+  document.querySelectorAll(".layout-option[data-logo]").forEach(opt => { opt.onclick = e => { e.preventDefault(); document.querySelectorAll(".layout-option[data-logo]").forEach(o => o.classList.remove("active")); opt.classList.add("active"); opt.querySelector('input').checked = true; $("logoUrlGroup").style.display = opt.dataset.logo === "image" ? "block" : "none"; }; });
+
+  $("saveDesignBtn").onclick = async () => {
+    const themeInput = document.querySelector('input[name="theme"]:checked'); const layoutInput = document.querySelector('input[name="menuLayout"]:checked'); const logoInput = document.querySelector('input[name="logoType"]:checked');
+    const data = { theme: themeInput ? themeInput.value : "white-red", menuLayout: layoutInput ? layoutInput.value : "grid", logoType: logoInput ? logoInput.value : "svg", logoUrl: $("setLogoUrl").value.trim(), showPopular: $("setShowPopular").checked, showOffers: $("setShowOffers").checked, showPrepTime: $("setShowPrepTime").checked, showCallButton: $("setShowCallButton").checked };
+    try { await setDoc(doc(db, "settings", "info"), data, { merge: true }); showToast("✓ تم حفظ التصميم", "success"); } catch (err) { showToast("❌ فشل الحفظ", "error"); }
+  };
+
+  function loadSettingsForm() { $("setName").value = settings.name || ""; $("setSubtitle").value = settings.subtitle || ""; $("setStatus").value = settings.status || ""; $("setStatusType").value = settings.statusType || "open"; $("setHeroImage").value = settings.heroImage || ""; $("setWhatsapp").value = settings.whatsapp || ""; $("setWhatsappDisplay").value = settings.whatsappDisplay || ""; $("setPhone").value = settings.phone || ""; $("setPhoneDisplay").value = settings.phoneDisplay || ""; $("setPhone2").value = settings.phone2 || ""; $("setPhone2Display").value = settings.phone2Display || ""; $("setAddress").value = settings.address || ""; $("setMapUrl").value = settings.mapUrl || ""; $("setDeliveryNote").value = settings.deliveryNote || ""; $("setDeliveryShow").checked = settings.deliveryShow !== false; renderDeliveryList(); }
+  function renderDeliveryList() { const box = $("deliveryList"); if (!deliveryOptions.length) { box.innerHTML = `<div class="empty-box" style="padding:16px"><div class="empty-box-text">لا توجد خيارات توصيل.</div></div>`; return; } box.innerHTML = deliveryOptions.map((o, idx) => `<div class="delivery-row" style="flex-direction:column;align-items:stretch;gap:10px;margin-bottom:10px;background:var(--bg-2);padding:12px;border-radius:14px;border:1px solid var(--border)"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><input type="text" class="name-input" value="${o.name || ''}" data-name="${idx}" placeholder="اسم الخيار" style="flex:1;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)"><input type="text" class="url-input" value="${o.url || ''}" data-url="${idx}" placeholder="الرابط" style="flex:1;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)"><button class="icon-btn del" data-remove-del="${idx}">🗑️</button></div></div>`).join(""); box.querySelectorAll("[data-name]").forEach(inp => inp.oninput = e => { deliveryOptions[+inp.dataset.name].name = e.target.value; }); box.querySelectorAll("[data-url]").forEach(inp => inp.oninput = e => { deliveryOptions[+inp.dataset.url].url = e.target.value; }); box.querySelectorAll("[data-remove-del]").forEach(b => b.onclick = () => { deliveryOptions.splice(+b.dataset.removeDel, 1); renderDeliveryList(); }); }
+  $("addDeliveryBtn").onclick = () => { deliveryOptions.push({ name: "", url: "", icon: "🛵" }); renderDeliveryList(); };
+
+  $("saveSettingsBtn").onclick = async () => { const data = { name: $("setName").value.trim() || "الباشا هورو", subtitle: $("setSubtitle").value.trim(), status: $("setStatus").value.trim() || "مفتوح الآن", statusType: $("setStatusType").value, heroImage: $("setHeroImage").value.trim(), whatsapp: $("setWhatsapp").value.trim().replace(/\D/g, ''), whatsappDisplay: $("setWhatsappDisplay").value.trim(), phone: $("setPhone").value.trim().replace(/\D/g, ''), phoneDisplay: $("setPhoneDisplay").value.trim(), phone2: $("setPhone2").value.trim().replace(/\D/g, ''), phone2Display: $("setPhone2Display").value.trim(), address: $("setAddress").value.trim(), mapUrl: $("setMapUrl").value.trim(), deliveryNote: $("setDeliveryNote").value.trim(), deliveryShow: $("setDeliveryShow").checked, deliveryOptions: deliveryOptions.filter(o => o.name && o.url) }; try { await setDoc(doc(db, "settings", "info"), data, { merge: true }); showToast("✓ تم حفظ الإعدادات", "success"); } catch (err) { showToast("❌ فشل الحفظ", "error"); } };
+  applyTheme(DEFAULT_SETTINGS.theme);
+</script>
+</body>
+</html>
