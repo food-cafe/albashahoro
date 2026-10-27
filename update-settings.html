@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحديث الإعدادات | الباشا هورو</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Cairo',sans-serif;background:#F8F9FA;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}
+.card{background:#fff;padding:40px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;max-width:400px;width:90%;}
+h1{color:#E10600;margin-bottom:20px;font-size:22px;}
+button{background:#E10600;color:#fff;border:none;padding:15px 30px;font-size:16px;border-radius:30px;cursor:pointer;font-weight:bold;width:100%;}
+button:disabled{opacity:0.5;}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>تحديث إعدادات الموقع</h1>
+  <p style="margin-bottom:20px;color:#555;font-size:14px;">هذا الملف سيقوم بتحديث (الثيم، النصوص، التوصيل) فقط. ولن يمس الأصناف أو الصور إطلاقاً.</p>
+  <button id="btn">🚀 اضغطي هنا للتحديث</button>
+  <p id="status" style="margin-top:15px;font-weight:bold;color:green;"></p>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCkNhXAMRZJpoPoWmEOCxeKVJAGgmn1tlY",
+    authDomain: "albashahoro-d3674.firebaseapp.com",
+    projectId: "albashahoro-d3674",
+    storageBucket: "albashahoro-d3674.firebasestorage.app",
+    messagingSenderId: "1019540135757",
+    appId: "1:1019540135757:web:d30c4c4e49786addd32104"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const btn = document.getElementById('btn');
+  const status = document.getElementById('status');
+
+  btn.onclick = async () => {
+    btn.disabled = true;
+    btn.textContent = "⏳ جاري التحديث...";
+    try {
+      const settingsRef = doc(db, "settings", "info");
+      
+      // تحديث الإعدادات فقط (بدون لمس الأصناف)
+      await setDoc(settingsRef, {
+        theme: "white-red",
+        status: "مفتوح من 10 صباحاً حتى 2",
+        deliveryNote: "خدمة التوصيل متوفرة في دمشق",
+        deliveryOptions: [{ name: "توصيل المطعم", url: "https://wa.me/963935462965", icon: "🛵", logoUrl: "" }]
+      }, { merge: true });
+      
+      status.textContent = "✅ تم التحديث بنجاح! اذهبي للموقع الآن واضغطي Ctrl+F5";
+      status.style.color = "green";
+    } catch (e) {
+      status.textContent = "❌ حدث خطأ: " + e.message;
+      status.style.color = "red";
+      btn.disabled = false;
+      btn.textContent = "🚀 اضغطي هنا للتحديث";
+    }
+  };
+</script>
+</body>
+</html>
